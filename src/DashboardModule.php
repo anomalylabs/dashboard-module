@@ -1,13 +1,7 @@
-<?php namespace Anomaly\Streams\Module\Dashboard;
+<?php namespace Anomaly\Streams\Addon\Module\Dashboard;
 
-use Streams\Core\Addon\ModuleAbstract;
+use Anomaly\Streams\Platform\Addon\Module\ModuleAddon;
 
-class DashboardModule extends ModuleAbstract
+class DashboardModule extends ModuleAddon
 {
-    /**
-     * The icon to represent the module.
-     *
-     * @var string
-     */
-    public $icon = '<i class="ion-speedometer"></i>';
 }
