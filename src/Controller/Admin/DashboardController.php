@@ -1,6 +1,6 @@
-<?php namespace Anomaly\Streams\Module\Dashboard\Controller\Admin;
+<?php namespace Anomaly\Streams\Addon\Module\Dashboard\Controller\Admin;
 
-use Streams\Core\Controller\AdminController;
+use Anomaly\Streams\Platform\Http\Controller\AdminController;
 
 class DashboardController extends AdminController
 {
