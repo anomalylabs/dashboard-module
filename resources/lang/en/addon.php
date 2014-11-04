@@ -1,6 +1,5 @@
 <?php
 
 return array(
-    'name'        => 'Dashboard',
-    'description' => '',
+    'name' => 'Dashboard',
 );

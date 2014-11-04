@@ -1,8 +1,8 @@
 <?php namespace Anomaly\Streams\Addon\Module\Dashboard;
 
-use Anomaly\Streams\Platform\Addon\Module\ModuleAddon;
+use Anomaly\Streams\Platform\Addon\Module\Module;
 
-class DashboardModule extends ModuleAddon
+class DashboardModule extends Module
 {
     protected $slug = 'dashboard';
 
