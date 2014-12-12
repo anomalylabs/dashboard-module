@@ -10,4 +10,3 @@ class DashboardController extends AdminController
         return view('module::index');
     }
 }
- 
