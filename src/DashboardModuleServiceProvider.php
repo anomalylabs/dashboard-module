@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Module\Dashboard;
+<?php namespace Anomaly\DashboardModule;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -12,7 +12,7 @@ class DashboardModuleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register('Anomaly\Streams\Addon\Module\Dashboard\Provider\RouteServiceProvider');
+        $this->app->register('Anomaly\DashboardModule\Provider\RouteServiceProvider');
     }
 }
  

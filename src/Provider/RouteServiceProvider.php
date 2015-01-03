@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Module\Dashboard\Provider;
+<?php namespace Anomaly\DashboardModule\Provider;
 
 class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
@@ -8,7 +8,7 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
      *
      * @var string
      */
-    protected $prefix = 'Anomaly\Streams\Addon\Module\Dashboard\Http\Controller\\';
+    protected $prefix = 'Anomaly\DashboardModule\Http\Controller\\';
 
     /**
      * Define the routes for the application.

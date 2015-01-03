@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Module\Dashboard;
+<?php namespace Anomaly\DashboardModule;
 
 use Anomaly\Streams\Platform\Addon\Module\Module;
 
