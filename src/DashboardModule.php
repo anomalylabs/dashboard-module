@@ -15,4 +15,5 @@ class DashboardModule extends Module
             'url' => 'admin/dashboard',
         ],
     ];
+
 }

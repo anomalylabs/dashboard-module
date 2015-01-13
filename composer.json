@@ -2,7 +2,11 @@
     "name": "anomaly/dashboard-module",
     "type": "streams-addon",
     "description": "An extension based dashboard and reporting module.",
-    "keywords": ["streams-addon", "dashboard", "laravel"],
+    "keywords": [
+        "streams-addon",
+        "dashboard",
+        "laravel"
+    ],
     "homepage": "http://anomaly.is/",
     "license": "MIT",
     "authors": [
