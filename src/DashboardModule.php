@@ -2,6 +2,14 @@
 
 use Anomaly\Streams\Platform\Addon\Module\Module;
 
+/**
+ * Class DashboardModule
+ *
+ * @link          http://anomaly.is/streams-platform
+ * @author        AnomalyLabs, Inc. <hello@anomaly.is>
+ * @author        Ryan Thompson <ryan@anomaly.is>
+ * @package       Anomaly\DashboardModule
+ */
 class DashboardModule extends Module
 {
 
@@ -10,10 +18,6 @@ class DashboardModule extends Module
      *
      * @var array
      */
-    protected $sections = [
-        'dashboard' => [
-            'url' => 'admin/dashboard',
-        ],
-    ];
+    protected $sections = 'Anomaly\DashboardModule\DashboardModuleSections@handle';
 
 }
