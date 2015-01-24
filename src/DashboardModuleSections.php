@@ -53,7 +53,7 @@ class DashboardModuleSections
         return array_map(
             function (Extension $extension) {
                 return [
-                    'slug' => $extension->getSlug(),
+                    'slug' => $extension->getNamespace(),
                     'text' => trans($extension->getName())
                 ];
             },

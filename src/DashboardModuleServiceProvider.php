@@ -2,6 +2,14 @@
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class DashboardModuleServiceProvider
+ *
+ * @link          http://anomaly.is/streams-platform
+ * @author        AnomalyLabs, Inc. <hello@anomaly.is>
+ * @author        Ryan Thompson <ryan@anomaly.is>
+ * @package       Anomaly\DashboardModule
+ */
 class DashboardModuleServiceProvider extends ServiceProvider
 {
 
@@ -12,7 +20,6 @@ class DashboardModuleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register('Anomaly\DashboardModule\Provider\RouteServiceProvider');
+        $this->app->register('Anomaly\DashboardModule\Dashboard\DashboardServiceProvider');
     }
 }
- 
