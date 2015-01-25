@@ -20,9 +20,9 @@ class DashboardBuilder
     /**
      * The dashboard reports.
      *
-     * @var array
+     * @var null|array|string
      */
-    protected $reports = [];
+    protected $reports = null;
 
     /**
      * The dashboard object.
@@ -94,7 +94,7 @@ class DashboardBuilder
     /**
      * Get the reports.
      *
-     * @return array
+     * @return null|array|string
      */
     public function getReports()
     {
@@ -104,10 +104,10 @@ class DashboardBuilder
     /**
      * Set the reports.
      *
-     * @param array $reports
+     * @param $reports
      * @return $this
      */
-    public function setReports(array $reports)
+    public function setReports($reports)
     {
         $this->reports = $reports;
 

@@ -1,5 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Dashboard;
 
+use Anomaly\DashboardModule\Dashboard\Component\Report\Contract\ReportInterface;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -148,5 +149,15 @@ class Dashboard implements DashboardInterface
     public function getReports()
     {
         return $this->reports;
+    }
+
+    /**
+     * Add a report to the report collection.
+     *
+     * @param ReportInterface $report
+     */
+    public function addReport(ReportInterface $report)
+    {
+        $this->reports->put($report->getSlug(), $report);
     }
 }
