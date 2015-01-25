@@ -20,9 +20,9 @@ class DashboardBuilder
     /**
      * The dashboard reports.
      *
-     * @var null|array|string
+     * @var string|array
      */
-    protected $reports = null;
+    protected $reports = 'Anomaly\DashboardModule\Dashboard\Handler\ReportsHandler@handle';
 
     /**
      * The dashboard object.
@@ -104,10 +104,10 @@ class DashboardBuilder
     /**
      * Set the reports.
      *
-     * @param $reports
+     * @param array $reports
      * @return $this
      */
-    public function setReports($reports)
+    public function setReports(array $reports)
     {
         $this->reports = $reports;
 

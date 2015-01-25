@@ -1,6 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
 
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
+use Illuminate\Support\Collection;
 
 /**
  * Class ReportBuilder

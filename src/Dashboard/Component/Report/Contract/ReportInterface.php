@@ -1,5 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Report\Contract;
 
+use Anomaly\Streams\Platform\Addon\Extension\Contract\ExtensionInterface;
+
 /**
  * Interface ReportInterface
  *
@@ -8,13 +10,11 @@
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Report\Contract
  */
-interface ReportInterface
+interface ReportInterface extends ExtensionInterface
 {
 
     /**
-     * Get the report slug.
-     *
-     * @return string
+     * Make the report.
      */
-    public function getSlug();
+    public function make();
 }

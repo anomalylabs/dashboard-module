@@ -1,6 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Command\Handler;
 
 use Anomaly\DashboardModule\Dashboard\Command\LoadDashboard;
+use Anomaly\DashboardModule\Dashboard\Component\Report\Command\LoadReports;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
  * Class LoadDashboardHandler
@@ -13,6 +15,8 @@ use Anomaly\DashboardModule\Dashboard\Command\LoadDashboard;
 class LoadDashboardHandler
 {
 
+    use DispatchesCommands;
+
     /**
      * Handle the command.
      *
@@ -20,5 +24,6 @@ class LoadDashboardHandler
      */
     public function handle(LoadDashboard $command)
     {
+        $this->dispatch(new LoadReports($command->getDashboard()));
     }
 }
