@@ -19,7 +19,15 @@ class ReportNormalizer
      */
     public function normalize(array $reports)
     {
-        foreach ($reports as $slug => &$report) {
+        foreach ($reports as &$report) {
+
+            /**
+             * If the report is a a string and there is no slug
+             * then use the report as the report parameter.
+             */
+            if (is_string($report)) {
+                $report = compact('report');
+            }
         }
 
         return $reports;

@@ -53,11 +53,11 @@ class DashboardModuleSections
         return array_map(
             function (Extension $extension) {
                 return [
-                    'slug' => $extension->getNamespace(),
+                    'slug' => $extension->getIdentifier(),
                     'text' => trans($extension->getName())
                 ];
             },
-            $this->extensions->search($module->getNamespace('dashboard.*'))->all()
+            $this->extensions->search($module->getNamespace('report.*'))->all()
         );
     }
 }
