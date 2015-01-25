@@ -14,4 +14,38 @@ use Anomaly\Streams\Platform\Addon\Extension\Extension;
 class Dashboard extends Extension implements DashboardInterface
 {
 
+    /**
+     * The dashboard output.
+     *
+     * @var string
+     */
+    protected $output;
+
+    /**
+     * Make the dashboard.
+     */
+    public function make()
+    {
+        $this->output = view($this->getNamespace('dashboard'));
+    }
+
+    /**
+     * Get the output.
+     *
+     * @return string
+     */
+    public function getOutput()
+    {
+        return $this->output;
+    }
+
+    /**
+     * Set the output.
+     *
+     * @param string $output
+     */
+    public function setOutput($output)
+    {
+        $this->output = $output;
+    }
 }

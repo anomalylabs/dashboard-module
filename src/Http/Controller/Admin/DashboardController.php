@@ -1,6 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Http\Controller\Admin;
 
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
+use Anomaly\DashboardModule\Dashboard\Dashboard;
+use Anomaly\Streams\Platform\Asset\Asset;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
 
 /**
@@ -26,7 +28,7 @@ class DashboardController extends AdminController
      *
      * @param DashboardRepositoryInterface $dashboards
      */
-    public function __construct(DashboardRepositoryInterface $dashboards)
+    public function __construct(DashboardRepositoryInterface $dashboards, Asset $asset)
     {
         $this->dashboards = $dashboards;
     }
@@ -43,6 +45,10 @@ class DashboardController extends AdminController
 
         if (!$dashboard) {
             $dashboard = $this->dashboards->getDefault();
+        }
+
+        if ($dashboard instanceof Dashboard) {
+            $dashboard->make();
         }
 
         return view('anomaly.module.dashboard::admin/index', compact('dashboard'));
