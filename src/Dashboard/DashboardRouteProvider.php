@@ -25,9 +25,5 @@ class DashboardRouteProvider extends RouteServiceProvider
             'admin/dashboard',
             'Anomaly\DashboardModule\Http\Controller\Admin\DashboardController@index'
         );
-        $router->any(
-            'admin/dashboard/{dashboard?}',
-            'Anomaly\DashboardModule\Http\Controller\Admin\DashboardController@index'
-        );
     }
 }

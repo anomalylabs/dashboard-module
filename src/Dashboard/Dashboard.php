@@ -1,7 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Dashboard;
 
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
-use Anomaly\Streams\Platform\Addon\Extension\Extension;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 /**
  * Class Dashboard
@@ -11,41 +12,141 @@ use Anomaly\Streams\Platform\Addon\Extension\Extension;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard
  */
-class Dashboard extends Extension implements DashboardInterface
+class Dashboard implements DashboardInterface
 {
 
     /**
-     * The dashboard output.
+     * The dashboard content.
      *
-     * @var string
+     * @var null|View
      */
-    protected $output;
+    protected $content = null;
 
     /**
-     * Make the dashboard.
+     * The dashboard view data.
+     *
+     * @var Collection
      */
-    public function make()
+    protected $data;
+
+    /**
+     * The dashboard options.
+     *
+     * @var Collection
+     */
+    protected $options;
+
+    /**
+     * The dashboard reports.
+     *
+     * @var Collection
+     */
+    protected $reports;
+
+    /**
+     * Create a new Dashboard instance.
+     *
+     * @param Collection $data
+     * @param Collection $options
+     * @param Collection $reports
+     */
+    function __construct(Collection $data, Collection $options, Collection $reports)
     {
-        $this->output = view($this->getNamespace('dashboard'));
+        $this->data    = $data;
+        $this->options = $options;
+        $this->reports = $reports;
     }
 
     /**
-     * Get the output.
+     * Get the content.
      *
-     * @return string
+     * @return View|null
      */
-    public function getOutput()
+    public function getContent()
     {
-        return $this->output;
+        return $this->content;
     }
 
     /**
-     * Set the output.
+     * Set the content.
      *
-     * @param string $output
+     * @param View $content
+     * @return $this
      */
-    public function setOutput($output)
+    public function setContent(View $content)
     {
-        $this->output = $output;
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get the data.
+     *
+     * @return Collection
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * Add data to the data collection.
+     *
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function addData($key, $value)
+    {
+        $this->data->put($key, $value);
+
+        return $this;
+    }
+
+    /**
+     * Get the options.
+     *
+     * @return Collection
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Set an option.
+     *
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function setOption($key, $value)
+    {
+        $this->options->put($key, $value);
+
+        return $this;
+    }
+
+    /**
+     * Get an option value.
+     *
+     * @param $key
+     * @param $default
+     * @return mixed
+     */
+    public function getOption($key, $default)
+    {
+        return $this->options->get($key, $default);
+    }
+
+    /**
+     * Get the reports.
+     *
+     * @return Collection
+     */
+    public function getReports()
+    {
+        return $this->reports;
     }
 }

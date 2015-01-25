@@ -1,8 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Http\Controller\Admin;
 
-use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
-use Anomaly\DashboardModule\Dashboard\Dashboard;
-use Anomaly\Streams\Platform\Asset\Asset;
+use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
 
 /**
@@ -17,40 +15,13 @@ class DashboardController extends AdminController
 {
 
     /**
-     * The dashboard repository.
+     * Display the default dashboard.
      *
-     * @var DashboardRepositoryInterface
-     */
-    protected $dashboards;
-
-    /**
-     * Create a new DashboardController instance.
-     *
-     * @param DashboardRepositoryInterface $dashboards
-     */
-    public function __construct(DashboardRepositoryInterface $dashboards, Asset $asset)
-    {
-        $this->dashboards = $dashboards;
-    }
-
-    /**
-     * Display the dashboard.
-     *
-     * @param null $dashboard
+     * @param DashboardBuilder $dashboard
      * @return \Illuminate\View\View
      */
-    public function index($dashboard = null)
+    public function index(DashboardBuilder $dashboard)
     {
-        $dashboard = $this->dashboards->get($dashboard);
-
-        if (!$dashboard) {
-            $dashboard = $this->dashboards->getDefault();
-        }
-
-        if ($dashboard instanceof Dashboard) {
-            $dashboard->make();
-        }
-
-        return view('anomaly.module.dashboard::admin/index', compact('dashboard'));
+        return $dashboard->render();
     }
 }
