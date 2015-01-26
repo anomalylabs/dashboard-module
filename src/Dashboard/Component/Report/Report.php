@@ -33,6 +33,13 @@ class Report extends Extension implements ReportInterface
     protected $content = null;
 
     /**
+     * The report view data.
+     *
+     * @var array
+     */
+    protected $data = [];
+
+    /**
      * The view factory.
      *
      * @var Factory
@@ -66,7 +73,12 @@ class Report extends Extension implements ReportInterface
         $report = $this;
         $data   = $this->runHandler();
 
-        $this->setContent((string)$this->view->make('anomaly.module.dashboard::admin/report/index', compact('data', 'report')));
+        $this->setContent($this->view->make('anomaly.module.dashboard::admin/report/index', compact('data', 'report')));
+    }
+
+    public function render()
+    {
+        $this->view->make('anomaly.module.dashboard::admin/report/index', compact('report'));
     }
 
     /**
