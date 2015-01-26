@@ -1,5 +1,7 @@
 <?php namespace Anomaly\DashboardModule;
 
+use Anomaly\DashboardModule\Command\PublishAssets;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -12,6 +14,16 @@ use Illuminate\Support\ServiceProvider;
  */
 class DashboardModuleServiceProvider extends ServiceProvider
 {
+
+    use DispatchesCommands;
+
+    /**
+     * Boot the service provider.
+     */
+    public function boot()
+    {
+        $this->dispatch(new PublishAssets());
+    }
 
     /**
      * Register the service provider.
