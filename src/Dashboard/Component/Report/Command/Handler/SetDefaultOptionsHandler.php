@@ -1,19 +1,17 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\BuildReport;
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\SetDefaultHandler;
 use Anomaly\DashboardModule\Dashboard\Component\Report\Command\SetDefaultOptions;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
- * Class BuildReportHandler
+ * Class SetDefaultOptionsHandler
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler
  */
-class BuildReportHandler
+class SetDefaultOptionsHandler
 {
 
     use DispatchesCommands;
@@ -21,13 +19,13 @@ class BuildReportHandler
     /**
      * Handle the command.
      *
-     * @param BuildReport $command
+     * @param SetDefaultOptions $command
      */
-    public function handle(BuildReport $command)
+    public function handle(SetDefaultOptions $command)
     {
         $extension = $command->getExtension();
+        $report    = $extension->getReport();
 
-        $this->dispatch(new SetDefaultHandler($extension));
-        $this->dispatch(new SetDefaultOptions($extension));
+        $report->setOption('title', $report->getOption('title', $extension->getName()));
     }
 }

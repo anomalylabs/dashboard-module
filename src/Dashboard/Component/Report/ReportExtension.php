@@ -76,13 +76,14 @@ class ReportExtension extends Extension
         $this->make();
 
         $content = $this->report->getContent();
+        $options = $this->report->getOptions();
 
         return view(
             $this->report->getOption(
                 'report_view',
                 'anomaly.module.dashboard::admin/report/report'
             ),
-            compact('content')
+            compact('content', 'options')
         );
     }
 

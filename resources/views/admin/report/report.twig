@@ -1,8 +1,11 @@
 <div class="panel panel-default">
+
     <div class="panel-heading">
-        <span class="panel-title">{{ trans(report.name) }}</span>
+        <span class="panel-title">{{ trans(options.title) }}</span>
     </div>
+
     <div class="panel-body">
-        {{ report.content }}
+        {{ content|raw }}Test
     </div>
+    
 </div>
