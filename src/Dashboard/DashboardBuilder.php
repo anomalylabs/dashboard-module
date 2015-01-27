@@ -58,11 +58,16 @@ class DashboardBuilder
 
         $this->dispatch(new LoadDashboard($this->dashboard));
 
-        $options = $this->dashboard->getOptions();
-        $data    = $this->dashboard->getData();
+        $data = $this->dashboard->getData();
 
         $this->dashboard->setContent(
-            view($options->get('dashboard_view', 'anomaly.module.dashboard::admin/dashboard/index'), $data)
+            view(
+                $this->dashboard->getOption(
+                    'dashboard_view',
+                    'anomaly.module.dashboard::admin/dashboard/home'
+                ),
+                $data
+            )
         );
     }
 
@@ -75,10 +80,15 @@ class DashboardBuilder
     {
         $this->make();
 
-        $options = $this->dashboard->getOptions();
         $content = $this->dashboard->getContent();
 
-        return view($options->get('wrapper_view', 'streams::blank'), compact('content'));
+        return view(
+            $this->dashboard->getOption(
+                'wrapper_view',
+                'streams::blank'
+            ),
+            compact('content')
+        );
     }
 
     /**

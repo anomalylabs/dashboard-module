@@ -1,9 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\Contract\ReportInterface;
-use Anomaly\Streams\Platform\Addon\Extension\Extension;
-use Anomaly\Streams\Platform\Support\Resolver;
 use Illuminate\Container\Container;
+use Illuminate\Support\Collection;
 use Illuminate\View\Factory;
 use Illuminate\View\View;
 
@@ -15,88 +13,90 @@ use Illuminate\View\View;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Report
  */
-class Report extends Extension implements ReportInterface
+class Report
 {
-
-    /**
-     * The data handler.
-     *
-     * @var null|string
-     */
-    protected $handler = null;
 
     /**
      * The report content.
      *
-     * @var null|View
+     * @var null|string
      */
-    protected $content = null;
+    public $content = null;
 
     /**
-     * The report view data.
+     * The data collection.
      *
-     * @var array
+     * @var Collection
      */
-    protected $data = [];
+    protected $data;
 
     /**
-     * The view factory.
+     * The options collection.
      *
-     * @var Factory
+     * @var Collection
      */
-    protected $view;
+    protected $options;
 
     /**
-     * The application container.
-     *
-     * @var Container
+     * @param Collection $data
+     * @param Collection $options
      */
-    protected $container;
-
-    /**
-     * Create a Report instance.
-     *
-     * @param Container $container
-     * @param Factory   $view
-     */
-    public function __construct(Container $container, Factory $view)
+    public function __construct(Collection $data, Collection $options)
     {
-        $this->view      = $view;
-        $this->container = $container;
+        $this->data    = $data;
+        $this->options = $options;
     }
 
     /**
-     * Make the report.
+     * Get the data.
+     *
+     * @return Collection
      */
-    public function make()
+    public function getData()
     {
-        $report = $this;
-        $data   = $this->runHandler();
-
-        $this->setContent($this->view->make('anomaly.module.dashboard::admin/report/index', compact('data', 'report')));
-    }
-
-    public function render()
-    {
-        $this->view->make('anomaly.module.dashboard::admin/report/index', compact('report'));
+        return $this->data;
     }
 
     /**
-     * Run the data handler.
+     * Get the options.
+     *
+     * @return Collection
      */
-    protected function runHandler()
+    public function getOptions()
     {
-        if (!$this->handler) {
-            $this->handler = get_class($this) . 'Handler@handle';
-        }
+        return $this->options;
+    }
 
-        return $this->container->call($this->handler, [$this]);
+    /**
+     * Set an option.
+     *
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function setOption($key, $value)
+    {
+        $this->options->put($key, $value);
+
+        return $this;
+    }
+
+    /**
+     * Get an option value.
+     *
+     * @param $key
+     * @param $default
+     * @return mixed
+     */
+    public function getOption($key, $default)
+    {
+        return $this->options->get($key, $default);
     }
 
     /**
      * Get the content.
      *
-     * @return null|View
+     * @return null|string
      */
     public function getContent()
     {
@@ -106,7 +106,7 @@ class Report extends Extension implements ReportInterface
     /**
      * Set the content.
      *
-     * @param View $content
+     * @param null|string $content
      */
     public function setContent($content)
     {
