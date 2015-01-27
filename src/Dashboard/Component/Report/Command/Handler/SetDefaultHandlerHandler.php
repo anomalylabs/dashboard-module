@@ -26,7 +26,7 @@ class SetDefaultHandlerHandler
         $extension = $command->getExtension();
 
         if ($extension->getHandler() === null) {
-            $extension->setHandler(get_class($extension) . 'Handler@handle');
+            $extension->setHandler(substr(get_class($extension), 0, -9) . 'Handler@handle'); // Replace "Extension"
         }
     }
 }
