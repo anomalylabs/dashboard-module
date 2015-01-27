@@ -1,9 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
 
-use Illuminate\Container\Container;
 use Illuminate\Support\Collection;
-use Illuminate\View\Factory;
-use Illuminate\View\View;
 
 /**
  * Class Report
@@ -55,6 +52,20 @@ class Report
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * Add to the data collection.
+     *
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function addData($key, $value)
+    {
+        $this->data->put($key, $value);
+
+        return $this;
     }
 
     /**
