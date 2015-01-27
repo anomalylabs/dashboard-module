@@ -62,7 +62,7 @@ class ReportExtension extends Extension
         $data = $this->report->getData();
 
         $this->report->setContent(
-            view($this->getNamespace('views/content'), $data)
+            view($this->getNamespace('content'), $data)
         );
     }
 

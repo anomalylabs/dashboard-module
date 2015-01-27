@@ -1,6 +1,5 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\Contract\ReportInterface;
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
 
 /**
@@ -48,10 +47,10 @@ class ReportFactory
     /**
      * Hydrate the report with it's remaining parameters.
      *
-     * @param ReportInterface $report
+     * @param ReportExtension $report
      * @param array           $parameters
      */
-    protected function hydrate(ReportInterface $report, array $parameters)
+    protected function hydrate(ReportExtension $report, array $parameters)
     {
         foreach ($parameters as $parameter => $value) {
 

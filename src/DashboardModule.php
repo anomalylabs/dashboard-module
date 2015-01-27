@@ -18,6 +18,8 @@ class DashboardModule extends Module
      *
      * @var array
      */
-    protected $sections = 'Anomaly\DashboardModule\DashboardModuleSections@handle';
+    protected $sections = [
+        'home'
+    ];
 
 }
