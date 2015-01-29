@@ -52,7 +52,7 @@ class ReportsHandler
 
         return array_map(
             function (Extension $report) {
-                return $report->getIdentifier();
+                return $report->getProvides();
             },
             $this->extensions->search($module->getNamespace('report.*'))->all()
         );
