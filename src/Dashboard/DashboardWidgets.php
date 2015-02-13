@@ -42,19 +42,22 @@ class DashboardWidgets
     }
 
     /**
-     * Return the dashboard's widgets.
+     * Handle loading the dashboard widgets.
      *
+     * @param DashboardBuilder $builder
      * @return array
      */
-    public function handle()
+    public function handle(DashboardBuilder $builder)
     {
         $module = $this->modules->active();
 
-        return array_map(
-            function (Extension $widget) {
-                return $widget->getProvides();
-            },
-            $this->extensions->search($module->getNamespace('widget.*'))->all()
+        $builder->setWidgets(
+            array_map(
+                function (Extension $widget) {
+                    return $widget->getProvides();
+                },
+                $this->extensions->search($module->getNamespace('widget.*'))->all()
+            )
         );
     }
 }

@@ -35,7 +35,7 @@ class WidgetFactory
      */
     public function make(array $parameters)
     {
-        if (!$widget = $this->widgets->get(array_get($parameters, 'widget'))) {
+        if (!$widget = $this->widgets->find(array_get($parameters, 'widget'))) {
             $widget = app()->make(array_get($parameters, 'widget'));
         }
 

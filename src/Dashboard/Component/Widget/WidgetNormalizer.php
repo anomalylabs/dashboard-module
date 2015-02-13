@@ -1,5 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
 
+use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
+
 /**
  * Class WidgetNormalizer
  *
@@ -14,11 +16,12 @@ class WidgetNormalizer
     /**
      * Normalize widget input.
      *
-     * @param array $widgets
-     * @return array
+     * @param DashboardBuilder $builder
      */
-    public function normalize(array $widgets)
+    public function normalize(DashboardBuilder $builder)
     {
+        $widgets = $builder->getWidgets();
+
         foreach ($widgets as &$widget) {
 
             /**
@@ -30,6 +33,6 @@ class WidgetNormalizer
             }
         }
 
-        return $widgets;
+        $builder->setWidgets($widgets);
     }
 }

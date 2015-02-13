@@ -1,7 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
 
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
-use Illuminate\Support\Collection;
 
 /**
  * Class WidgetBuilder
@@ -51,8 +50,8 @@ class WidgetBuilder
 
         $this->input->read($builder);
 
-        foreach ($builder->getWidgets() as $slug => $action) {
-            $dashboard->addWidget($this->factory->make($action));
+        foreach ($builder->getWidgets() as $widget) {
+            $dashboard->addWidget($this->factory->make($widget));
         }
     }
 }
