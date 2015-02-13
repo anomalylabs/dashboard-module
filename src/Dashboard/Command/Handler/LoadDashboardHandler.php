@@ -1,7 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Command\Handler;
 
 use Anomaly\DashboardModule\Dashboard\Command\LoadDashboard;
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\LoadReports;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidgets;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
@@ -24,6 +24,6 @@ class LoadDashboardHandler
      */
     public function handle(LoadDashboard $command)
     {
-        $this->dispatch(new LoadReports($command->getDashboard()));
+        $this->dispatch(new LoadWidgets($command->getDashboard()));
     }
 }

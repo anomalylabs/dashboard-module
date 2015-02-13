@@ -1,7 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Command\Handler;
 
 use Anomaly\DashboardModule\Dashboard\Command\BuildDashboard;
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\BuildReports;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\BuildWidgets;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
@@ -24,6 +24,6 @@ class BuildDashboardHandler
      */
     public function handle(BuildDashboard $command)
     {
-        $this->dispatch(new BuildReports($command->getBuilder()));
+        $this->dispatch(new BuildWidgets($command->getBuilder()));
     }
 }

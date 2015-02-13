@@ -1,7 +1,7 @@
 {
     "name": "anomaly/dashboard-module",
     "type": "streams-addon",
-    "description": "An extension based dashboard and reporting module.",
+    "description": "An extension based dashboard module.",
     "keywords": [
         "streams-addon",
         "dashboard",

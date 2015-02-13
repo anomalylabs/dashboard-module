@@ -1,3 +1,3 @@
-#Dashboard Module
+# Dashboard Module
 
-System and addon dashboards and reports.
+An extension based dashboard module.

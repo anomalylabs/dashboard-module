@@ -1,20 +1,20 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
 
 use Illuminate\Support\Collection;
 
 /**
- * Class Report
+ * Class Widget
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget
  */
-class Report
+class Widget
 {
 
     /**
-     * The report content.
+     * The widget content.
      *
      * @var null|string
      */

@@ -1,16 +1,16 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report\Command;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
 
 /**
- * Class BuildReportsHandler
+ * Class BuildWidgetsHandler
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report\Command
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class BuildReports
+class BuildWidgets
 {
 
     /**
@@ -21,7 +21,7 @@ class BuildReports
     protected $builder;
 
     /**
-     * Create a new BuildReportsHandler instance.
+     * Create a new BuildWidgetsHandler instance.
      *
      * @param DashboardBuilder $builder
      */

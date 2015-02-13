@@ -1,73 +1,73 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\BuildReport;
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\LoadReport;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\BuildWidget;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidget;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
- * Class ReportExtension
+ * Class WidgetExtension
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget
  */
-class ReportExtension extends Extension
+class WidgetExtension extends Extension
 {
 
     use DispatchesCommands;
 
     /**
-     * The report handler.
+     * The widget handler.
      *
      * @var null|string
      */
     protected $handler = null;
 
     /**
-     * The report object.
+     * The widget object.
      *
-     * @var Report
+     * @var Widget
      */
-    protected $report;
+    protected $widget;
 
     /**
-     * Create a ReportExtension instance.
+     * Create a WidgetExtension instance.
      *
-     * @param Report $report
+     * @param Widget $widget
      */
-    public function __construct(Report $report)
+    public function __construct(Widget $widget)
     {
-        $this->report = $report;
+        $this->widget = $widget;
     }
 
     /**
-     * Build the report.
+     * Build the widget.
      */
     public function build()
     {
-        $this->dispatch(new BuildReport($this));
+        $this->dispatch(new BuildWidget($this));
     }
 
     /**
-     * Make the report.
+     * Make the widget.
      */
     public function make()
     {
         $this->build();
 
-        $this->dispatch(new LoadReport($this));
+        $this->dispatch(new LoadWidget($this));
 
-        $data = $this->report->getData();
+        $data = $this->widget->getData();
 
-        $this->report->setContent(
+        $this->widget->setContent(
             view($this->getNamespace('content'), $data)
         );
     }
 
     /**
-     * Render the report.
+     * Render the widget.
      *
      * @return \Illuminate\View\View
      */
@@ -75,20 +75,20 @@ class ReportExtension extends Extension
     {
         $this->make();
 
-        $content = $this->report->getContent();
-        $options = $this->report->getOptions();
+        $content = $this->widget->getContent();
+        $options = $this->widget->getOptions();
 
         return view(
-            $this->report->getOption(
-                'report_view',
-                'anomaly.module.dashboard::admin/report/report'
+            $this->widget->getOption(
+                'widget_view',
+                'anomaly.module.dashboard::admin/widget/widget'
             ),
             compact('content', 'options')
         );
     }
 
     /**
-     * Get the report handler.
+     * Get the widget handler.
      *
      * @return null|string
      */
@@ -98,7 +98,7 @@ class ReportExtension extends Extension
     }
 
     /**
-     * Set the report handler.
+     * Set the widget handler.
      *
      * @param null|string $handler
      * @return $this
@@ -111,17 +111,17 @@ class ReportExtension extends Extension
     }
 
     /**
-     * Get the report.
+     * Get the widget.
      *
-     * @return Report
+     * @return Widget
      */
-    public function getReport()
+    public function getWidget()
     {
-        return $this->report;
+        return $this->widget;
     }
 
     /**
-     * Render the report.
+     * Render the widget.
      *
      * @return string
      */

@@ -1,17 +1,17 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command\Handler;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\LoadReport;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidget;
 use Illuminate\Container\Container;
 
 /**
- * Class LoadReportHandler
+ * Class LoadWidgetHandler
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command\Handler
  */
-class LoadReportHandler
+class LoadWidgetHandler
 {
 
     /**
@@ -22,7 +22,7 @@ class LoadReportHandler
     protected $container;
 
     /**
-     * Create a LoadReportHandler instance.
+     * Create a LoadWidgetHandler instance.
      *
      * @param Container $container
      */
@@ -32,13 +32,13 @@ class LoadReportHandler
     }
 
     /**
-     * @param LoadReport $command
+     * @param LoadWidget $command
      */
-    public function handle(LoadReport $command)
+    public function handle(LoadWidget $command)
     {
         $extension = $command->getExtension();
-        $report    = $extension->getReport();
+        $widget    = $extension->getWidget();
 
-        $this->container->call($extension->getHandler(), compact('report'));
+        $this->container->call($extension->getHandler(), compact('widget'));
     }
 }

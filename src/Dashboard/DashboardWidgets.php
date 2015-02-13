@@ -1,18 +1,18 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Handler;
+<?php namespace Anomaly\DashboardModule\Dashboard;
 
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
 use Anomaly\Streams\Platform\Addon\Module\ModuleCollection;
 
 /**
- * Class ReportsHandler
+ * Class DashboardWidgets
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Handler
  */
-class ReportsHandler
+class DashboardWidgets
 {
 
     /**
@@ -30,7 +30,7 @@ class ReportsHandler
     protected $extensions;
 
     /**
-     * Create a ReportHandler instance.
+     * Create a WidgetHandler instance.
      *
      * @param ModuleCollection    $modules
      * @param ExtensionCollection $extensions
@@ -42,7 +42,7 @@ class ReportsHandler
     }
 
     /**
-     * Return the dashboard's reports.
+     * Return the dashboard's widgets.
      *
      * @return array
      */
@@ -51,10 +51,10 @@ class ReportsHandler
         $module = $this->modules->active();
 
         return array_map(
-            function (Extension $report) {
-                return $report->getProvides();
+            function (Extension $widget) {
+                return $widget->getProvides();
             },
-            $this->extensions->search($module->getNamespace('report.*'))->all()
+            $this->extensions->search($module->getNamespace('widget.*'))->all()
         );
     }
 }

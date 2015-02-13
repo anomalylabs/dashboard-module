@@ -18,11 +18,11 @@ class DashboardBuilder
     use DispatchesCommands;
 
     /**
-     * The dashboard reports.
+     * The dashboard widgets.
      *
      * @var string|array
      */
-    protected $reports = 'Anomaly\DashboardModule\Dashboard\Handler\ReportsHandler@handle';
+    protected $widgets = 'Anomaly\DashboardModule\Dashboard\DashboardWidgets@handle';
 
     /**
      * The dashboard object.
@@ -102,24 +102,24 @@ class DashboardBuilder
     }
 
     /**
-     * Get the reports.
+     * Get the widgets.
      *
      * @return null|array|string
      */
-    public function getReports()
+    public function getWidgets()
     {
-        return $this->reports;
+        return $this->widgets;
     }
 
     /**
-     * Set the reports.
+     * Set the widgets.
      *
-     * @param array $reports
+     * @param array $widgets
      * @return $this
      */
-    public function setReports(array $reports)
+    public function setWidgets(array $widgets)
     {
-        $this->reports = $reports;
+        $this->widgets = $widgets;
 
         return $this;
     }

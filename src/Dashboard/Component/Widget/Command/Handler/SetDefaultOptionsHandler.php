@@ -1,6 +1,6 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command\Handler;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\SetDefaultOptions;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\SetDefaultOptions;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
@@ -9,7 +9,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command\Handler
  */
 class SetDefaultOptionsHandler
 {
@@ -24,8 +24,8 @@ class SetDefaultOptionsHandler
     public function handle(SetDefaultOptions $command)
     {
         $extension = $command->getExtension();
-        $report    = $extension->getReport();
+        $widget    = $extension->getWidget();
 
-        $report->setOption('title', $report->getOption('title', $extension->getName()));
+        $widget->setOption('title', $widget->getOption('title', $extension->getName()));
     }
 }

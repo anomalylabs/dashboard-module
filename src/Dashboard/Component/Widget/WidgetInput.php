@@ -1,17 +1,17 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
 
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
 use Anomaly\Streams\Platform\Support\Resolver;
 
 /**
- * Class ReportInput
+ * Class WidgetInput
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget
  */
-class ReportInput
+class WidgetInput
 {
 
     /**
@@ -22,26 +22,26 @@ class ReportInput
     protected $resolver;
 
     /**
-     * The report normalizer.
+     * The widget normalizer.
      *
-     * @var ReportNormalizer
+     * @var WidgetNormalizer
      */
     protected $normalizer;
 
     /**
-     * Create a new ReportInput instance.
+     * Create a new WidgetInput instance.
      *
      * @param Resolver         $resolver
-     * @param ReportNormalizer $normalizer
+     * @param WidgetNormalizer $normalizer
      */
-    public function __construct(Resolver $resolver, ReportNormalizer $normalizer)
+    public function __construct(Resolver $resolver, WidgetNormalizer $normalizer)
     {
         $this->resolver   = $resolver;
         $this->normalizer = $normalizer;
     }
 
     /**
-     * Read the report input.
+     * Read the widget input.
      *
      * @param DashboardBuilder $builder
      */
@@ -52,22 +52,22 @@ class ReportInput
     }
 
     /**
-     * Resolve the report input.
+     * Resolve the widget input.
      *
      * @param DashboardBuilder $builder
      */
     protected function resolveInput(DashboardBuilder $builder)
     {
-        $builder->setReports($this->resolver->resolve($builder->getReports()));
+        $builder->setWidgets($this->resolver->resolve($builder->getWidgets()));
     }
 
     /**
-     * Normalize the report input.
+     * Normalize the widget input.
      *
      * @param DashboardBuilder $builder
      */
     protected function normalizeInput(DashboardBuilder $builder)
     {
-        $builder->setReports($this->normalizer->normalize($builder->getReports()));
+        $builder->setWidgets($this->normalizer->normalize($builder->getWidgets()));
     }
 }

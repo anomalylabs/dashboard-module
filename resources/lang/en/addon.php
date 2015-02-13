@@ -2,7 +2,7 @@
 
 return [
     'name'        => 'Dashboard',
-    'description' => 'An extension based dashboard and reporting module.',
+    'description' => 'An extension based dashboard module.',
     'section'     => [
         'home' => 'Home',
     ],

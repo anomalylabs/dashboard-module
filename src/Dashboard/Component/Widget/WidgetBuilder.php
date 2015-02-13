@@ -1,47 +1,47 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
 
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
 use Illuminate\Support\Collection;
 
 /**
- * Class ReportBuilder
+ * Class WidgetBuilder
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget
  */
-class ReportBuilder
+class WidgetBuilder
 {
 
     /**
      * The input reader.
      *
-     * @var ReportInput
+     * @var WidgetInput
      */
     protected $input;
 
     /**
-     * The report factory.
+     * The widget factory.
      *
-     * @var ReportFactory
+     * @var WidgetFactory
      */
     protected $factory;
 
     /**
-     * Create a ReportBuilder instance.
+     * Create a WidgetBuilder instance.
      *
-     * @param ReportInput   $input
-     * @param ReportFactory $factory
+     * @param WidgetInput   $input
+     * @param WidgetFactory $factory
      */
-    public function __construct(ReportInput $input, ReportFactory $factory)
+    public function __construct(WidgetInput $input, WidgetFactory $factory)
     {
         $this->input   = $input;
         $this->factory = $factory;
     }
 
     /**
-     * Build the reports.
+     * Build the widgets.
      *
      * @param DashboardBuilder $builder
      */
@@ -51,8 +51,8 @@ class ReportBuilder
 
         $this->input->read($builder);
 
-        foreach ($builder->getReports() as $slug => $action) {
-            $dashboard->addReport($this->factory->make($action));
+        foreach ($builder->getWidgets() as $slug => $action) {
+            $dashboard->addWidget($this->factory->make($action));
         }
     }
 }

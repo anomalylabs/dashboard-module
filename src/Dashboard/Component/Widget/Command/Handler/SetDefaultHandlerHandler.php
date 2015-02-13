@@ -1,6 +1,6 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command\Handler;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\Command\SetDefaultHandler;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\SetDefaultHandler;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
@@ -9,7 +9,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report\Command\Handler
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command\Handler
  */
 class SetDefaultHandlerHandler
 {

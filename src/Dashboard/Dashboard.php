@@ -1,6 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Dashboard;
 
-use Anomaly\DashboardModule\Dashboard\Component\Report\ReportExtension;
+use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -38,24 +38,24 @@ class Dashboard implements DashboardInterface
     protected $options;
 
     /**
-     * The dashboard reports.
+     * The dashboard widgets.
      *
      * @var Collection
      */
-    protected $reports;
+    protected $widgets;
 
     /**
      * Create a new Dashboard instance.
      *
      * @param Collection $data
      * @param Collection $options
-     * @param Collection $reports
+     * @param Collection $widgets
      */
-    function __construct(Collection $data, Collection $options, Collection $reports)
+    function __construct(Collection $data, Collection $options, Collection $widgets)
     {
         $this->data    = $data;
         $this->options = $options;
-        $this->reports = $reports;
+        $this->widgets = $widgets;
     }
 
     /**
@@ -142,22 +142,22 @@ class Dashboard implements DashboardInterface
     }
 
     /**
-     * Get the reports.
+     * Get the widgets.
      *
      * @return Collection
      */
-    public function getReports()
+    public function getWidgets()
     {
-        return $this->reports;
+        return $this->widgets;
     }
 
     /**
-     * Add a report to the report collection.
+     * Add a widget to the widget collection.
      *
-     * @param ReportExtension $report
+     * @param WidgetExtension $widget
      */
-    public function addReport(ReportExtension $report)
+    public function addWidget(WidgetExtension $widget)
     {
-        $this->reports->put($report->getSlug(), $report);
+        $this->widgets->put($widget->getSlug(), $widget);
     }
 }

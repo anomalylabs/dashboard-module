@@ -1,16 +1,16 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Report\Command;
+<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
 use Anomaly\DashboardModule\Dashboard\Dashboard;
 
 /**
- * Class LoadReports
+ * Class LoadWidgets
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Report\Command
+ * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class LoadReports
+class LoadWidgets
 {
 
     /**
@@ -21,7 +21,7 @@ class LoadReports
     protected $dashboard;
 
     /**
-     * Create a new LoadReports instance.
+     * Create a new LoadWidgets instance.
      *
      * @param Dashboard $dashboard
      */
