@@ -64,7 +64,7 @@ class DashboardBuilder
             view(
                 $this->dashboard->getOption(
                     'dashboard_view',
-                    'anomaly.module.dashboard::admin/dashboard/home'
+                    'anomaly.module.dashboard::admin/dashboard/dashboard'
                 ),
                 $data
             )
