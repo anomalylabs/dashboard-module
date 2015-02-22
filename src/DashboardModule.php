@@ -19,7 +19,7 @@ class DashboardModule extends Module
      * @var array
      */
     protected $sections = [
-        'home'
+        'dashboard'
     ];
 
 }
