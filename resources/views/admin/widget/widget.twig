@@ -1,11 +1,9 @@
-<div class="panel panel-default">
+<div class="ui segment">
 
-    <div class="panel-heading">
-        <span class="panel-title">{{ trans(options.title) }}</span>
-    </div>
+    <h3 class="header">
+        {{ trans(options.title) }}
+    </h3>
 
-    <div class="panel-body">
-        {{ content|raw }}
-    </div>
+    {{ content|raw }}
     
 </div>
