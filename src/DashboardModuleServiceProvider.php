@@ -1,8 +1,8 @@
 <?php namespace Anomaly\DashboardModule;
 
 use Anomaly\DashboardModule\Command\PublishAssets;
+use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Illuminate\Foundation\Bus\DispatchesCommands;
-use Illuminate\Support\ServiceProvider;
 
 /**
  * Class DashboardModuleServiceProvider
@@ -12,10 +12,28 @@ use Illuminate\Support\ServiceProvider;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule
  */
-class DashboardModuleServiceProvider extends ServiceProvider
+class DashboardModuleServiceProvider extends AddonServiceProvider
 {
 
     use DispatchesCommands;
+
+    /**
+     * The singleton bindings.
+     *
+     * @var array
+     */
+    protected $singletons = [
+        'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface' => 'Anomaly\DashboardModule\Dashboard\DashboardRepository'
+    ];
+
+    /**
+     * The addon routes.
+     *
+     * @var array
+     */
+    protected $routes = [
+        'admin/dashboard' => 'Anomaly\DashboardModule\Http\Controller\Admin\DashboardController@index'
+    ];
 
     /**
      * Boot the service provider.
@@ -23,20 +41,5 @@ class DashboardModuleServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->dispatch(new PublishAssets());
-    }
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->app->singleton(
-            'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface',
-            'Anomaly\DashboardModule\Dashboard\DashboardRepository'
-        );
-
-        $this->app->register('Anomaly\DashboardModule\DashboardModuleRouteProvider');
     }
 }
