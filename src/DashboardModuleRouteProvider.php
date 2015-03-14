@@ -1,17 +1,17 @@
-<?php namespace Anomaly\DashboardModule\Dashboard;
+<?php namespace Anomaly\DashboardModule;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Routing\Router;
 
 /**
- * Class DashboardRouteProvider
+ * Class DashboardModuleRouteProvider
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard
+ * @package       Anomaly\DashboardModule
  */
-class DashboardRouteProvider extends RouteServiceProvider
+class DashboardModuleRouteProvider extends RouteServiceProvider
 {
 
     /**

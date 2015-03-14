@@ -32,6 +32,11 @@ class DashboardModuleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register('Anomaly\DashboardModule\Dashboard\DashboardServiceProvider');
+        $this->app->singleton(
+            'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface',
+            'Anomaly\DashboardModule\Dashboard\DashboardRepository'
+        );
+
+        $this->app->register('Anomaly\DashboardModule\DashboardModuleRouteProvider');
     }
 }
