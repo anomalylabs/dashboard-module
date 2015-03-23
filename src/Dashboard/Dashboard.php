@@ -132,11 +132,11 @@ class Dashboard implements DashboardInterface
     /**
      * Get an option value.
      *
-     * @param $key
-     * @param $default
+     * @param      $key
+     * @param null $default
      * @return mixed
      */
-    public function getOption($key, $default)
+    public function getOption($key, $default = null)
     {
         return $this->options->get($key, $default);
     }

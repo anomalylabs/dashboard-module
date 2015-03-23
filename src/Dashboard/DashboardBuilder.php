@@ -60,15 +60,7 @@ class DashboardBuilder
 
         $data = $this->dashboard->getData();
 
-        $this->dashboard->setContent(
-            view(
-                $this->dashboard->getOption(
-                    'dashboard_view',
-                    'anomaly.module.dashboard::admin/dashboard/dashboard'
-                ),
-                $data
-            )
-        );
+        $this->dashboard->setContent(view($this->dashboard->getOption('dashboard_view'), $data));
     }
 
     /**
@@ -122,5 +114,28 @@ class DashboardBuilder
         $this->widgets = $widgets;
 
         return $this;
+    }
+
+    /**
+     * Get an option value from the dashboard.
+     *
+     * @param      $key
+     * @param null $default
+     * @return mixed
+     */
+    public function getDashboardOption($key, $default = null)
+    {
+        return $this->dashboard->getOption($key, $default);
+    }
+
+    /**
+     * Set an option value on the dashboard.
+     *
+     * @param $key
+     * @param $value
+     */
+    public function setDashboardOption($key, $value)
+    {
+        $this->dashboard->setOption($key, $value);
     }
 }

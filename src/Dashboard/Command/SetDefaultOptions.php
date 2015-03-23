@@ -1,22 +1,19 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Command;
 
-use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\BuildWidgets;
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
+use Anomaly\Streams\Platform\Addon\Module\ModuleCollection;
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
- * Class BuildDashboard
+ * Class SetDefaultOptions
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Command
  */
-class BuildDashboard implements SelfHandling
+class SetDefaultOptions implements SelfHandling
 {
-
-    use DispatchesCommands;
 
     /**
      * The dashboard builder.
@@ -26,7 +23,7 @@ class BuildDashboard implements SelfHandling
     protected $builder;
 
     /**
-     * Create a new BuildDashboard instance.
+     * Create a new SetDefaultOptions instance.
      *
      * @param DashboardBuilder $builder
      */
@@ -37,10 +34,17 @@ class BuildDashboard implements SelfHandling
 
     /**
      * Handle the command.
+     *
+     * @param ModuleCollection $modules
      */
-    public function handle()
+    public function handle(ModuleCollection $modules)
     {
-        $this->dispatch(new SetDefaultOptions($this->builder));
-        $this->dispatch(new BuildWidgets($this->builder));
+        if ($this->builder->getDashboardOption('dashboard_view')) {
+            return;
+        }
+
+        if ($module = $modules->active()) {
+            $this->builder->setDashboardOption('dashboard_view', $module->getNamespace('admin/dashboard'));
+        }
     }
 }

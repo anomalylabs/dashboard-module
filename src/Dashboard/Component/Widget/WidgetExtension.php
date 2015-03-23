@@ -81,7 +81,7 @@ class WidgetExtension extends Extension
         return view(
             $this->widget->getOption(
                 'widget_view',
-                'anomaly.module.dashboard::admin/widget/widget'
+                'anomaly.module.dashboard::admin/widget'
             ),
             compact('content', 'options')
         );
