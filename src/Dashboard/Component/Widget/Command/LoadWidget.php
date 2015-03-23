@@ -1,7 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
-use Anomaly\DashboardModule\Dashboard\Component\Widget\Widget;
 use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Bus\SelfHandling;
 
 /**
  * Class LoadWidget
@@ -11,7 +12,7 @@ use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class LoadWidget
+class LoadWidget implements SelfHandling
 {
 
     /**
@@ -32,12 +33,14 @@ class LoadWidget
     }
 
     /**
-     * Get the widget extension.
+     * Handle the command.
      *
-     * @return WidgetExtension
+     * @param Container $container
      */
-    public function getExtension()
+    public function handle(Container $container)
     {
-        return $this->extension;
+        $widget = $this->extension->getWidget();
+
+        $container->call($this->extension->getHandler(), compact('widget'));
     }
 }

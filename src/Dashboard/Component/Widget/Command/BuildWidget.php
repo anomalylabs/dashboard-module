@@ -1,6 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
 use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
+use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
  * Class BuildWidget
@@ -10,8 +12,10 @@ use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class BuildWidget
+class BuildWidget implements SelfHandling
 {
+
+    use DispatchesCommands;
 
     /**
      * The widget extension.
@@ -31,12 +35,11 @@ class BuildWidget
     }
 
     /**
-     * Get the widget extension.
-     *
-     * @return WidgetExtension
+     * Handle the command.
      */
-    public function getExtension()
+    public function handle()
     {
-        return $this->extension;
+        $this->dispatch(new SetDefaultProperties($this->extension));
+        $this->dispatch(new SetDefaultOptions($this->extension));
     }
 }

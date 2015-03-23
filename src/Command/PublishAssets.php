@@ -1,5 +1,11 @@
 <?php namespace Anomaly\DashboardModule\Command;
 
+use Anomaly\DashboardModule\DashboardModule;
+use Illuminate\Config\Repository;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Filesystem\Filesystem;
+
 /**
  * Class PublishAssets
  *
@@ -8,7 +14,30 @@
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Command
  */
-class PublishAssets
+class PublishAssets implements SelfHandling
 {
 
+    /**
+     * Handle the command.
+     *
+     * @param Container       $container
+     * @param DashboardModule $module
+     * @param Filesystem      $files
+     */
+    public function handle(Container $container, DashboardModule $module, Filesystem $files)
+    {
+        $libraries = [
+            'highcharts',
+            'highmaps'
+        ];
+
+        foreach ($libraries as $library) {
+
+            $target = $container->make('streams.asset.path') . '/' . $library;
+
+            if (!is_dir($target)) {
+                $files->copyDirectory($module->getPath('resources/js/' . $library), $target);
+            }
+        }
+    }
 }

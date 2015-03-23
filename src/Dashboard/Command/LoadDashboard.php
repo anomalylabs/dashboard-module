@@ -1,6 +1,9 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Command;
 
+use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidgets;
 use Anomaly\DashboardModule\Dashboard\Dashboard;
+use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
  * Class LoadDashboard
@@ -10,8 +13,10 @@ use Anomaly\DashboardModule\Dashboard\Dashboard;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Command
  */
-class LoadDashboard
+class LoadDashboard implements SelfHandling
 {
+
+    use DispatchesCommands;
 
     /**
      * The dashboard object.
@@ -31,12 +36,10 @@ class LoadDashboard
     }
 
     /**
-     * Get the dashboard.
-     *
-     * @return Dashboard
+     * Handle the command.
      */
-    public function getDashboard()
+    public function handle()
     {
-        return $this->dashboard;
+        $this->dispatch(new LoadWidgets($this->dashboard));
     }
 }

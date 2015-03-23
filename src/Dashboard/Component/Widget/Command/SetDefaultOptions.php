@@ -1,6 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
 use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
+use Illuminate\Contracts\Bus\SelfHandling;
 
 /**
  * Class SetDefaultTitleOption
@@ -10,7 +11,7 @@ use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class SetDefaultOptions
+class SetDefaultOptions implements SelfHandling
 {
 
     /**
@@ -31,12 +32,12 @@ class SetDefaultOptions
     }
 
     /**
-     * Get the widget extension.
-     *
-     * @return WidgetExtension
+     * Handle the command.
      */
-    public function getExtension()
+    public function handle()
     {
-        return $this->extension;
+        $widget = $this->extension->getWidget();
+
+        $widget->setOption('title', $widget->getOption('title', $this->extension->getName()));
     }
 }

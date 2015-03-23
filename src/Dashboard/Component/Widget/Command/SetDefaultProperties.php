@@ -1,16 +1,17 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
 use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
+use Illuminate\Contracts\Bus\SelfHandling;
 
 /**
- * Class SetDefaultHandler
+ * Class SetDefaultProperties
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class SetDefaultHandler
+class SetDefaultProperties implements SelfHandling
 {
 
     /**
@@ -31,12 +32,14 @@ class SetDefaultHandler
     }
 
     /**
-     * Get the widget extension.
-     *
-     * @return WidgetExtension
+     * Handle the command.
      */
-    public function getExtension()
+    public function handle()
     {
-        return $this->extension;
+        if ($this->extension->getHandler() === null) {
+            $this->extension->setHandler(
+                substr(get_class($this->extension), 0, -9) . 'Handler@handle'
+            ); // Replace "Extension with Handler@handle"
+        }
     }
 }

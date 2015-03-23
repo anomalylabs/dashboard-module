@@ -1,6 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
+use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetBuilder;
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
+use Illuminate\Contracts\Bus\SelfHandling;
 
 /**
  * Class BuildWidgetsHandler
@@ -10,7 +12,7 @@ use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class BuildWidgets
+class BuildWidgets implements SelfHandling
 {
 
     /**
@@ -31,12 +33,12 @@ class BuildWidgets
     }
 
     /**
-     * Get the builder.
+     * Handle the command.
      *
-     * @return DashboardBuilder
+     * @param WidgetBuilder $builder
      */
-    public function getBuilder()
+    public function handle(WidgetBuilder $builder)
     {
-        return $this->builder;
+        $builder->build($this->builder);
     }
 }

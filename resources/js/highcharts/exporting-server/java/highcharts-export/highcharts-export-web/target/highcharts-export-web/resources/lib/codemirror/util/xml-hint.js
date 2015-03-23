@@ -1,11 +1,10 @@
-
-(function() {
+(function () {
 
     CodeMirror.xmlHints = [];
 
-    CodeMirror.xmlHint = function(cm, simbol) {
+    CodeMirror.xmlHint = function (cm, simbol) {
 
-        if(simbol.length > 0) {
+        if (simbol.length > 0) {
             var cursor = cm.getCursor();
             cm.replaceSelection(simbol);
             cursor = {line: cursor.line, ch: cursor.ch + 1};
@@ -15,13 +14,15 @@
         // dirty hack for simple-hint to receive getHint event on space
         var getTokenAt = editor.getTokenAt;
 
-        editor.getTokenAt = function() { return 'disabled'; };
+        editor.getTokenAt = function () {
+            return 'disabled';
+        };
         CodeMirror.simpleHint(cm, getHint);
 
         editor.getTokenAt = getTokenAt;
     };
 
-    var getHint = function(cm) {
+    var getHint = function (cm) {
 
         var cursor = cm.getCursor();
 
@@ -30,8 +31,8 @@
             var text = cm.getRange({line: 0, ch: 0}, cursor);
             var typed = '';
             var simbol = '';
-            for(var i = text.length - 1; i >= 0; i--) {
-                if(text[i] == ' ' || text[i] == '<') {
+            for (var i = text.length - 1; i >= 0; i--) {
+                if (text[i] == ' ' || text[i] == '<') {
                     simbol = text[i];
                     break;
                 }
@@ -45,29 +46,30 @@
             var path = getActiveElement(cm, text) + simbol;
             var hints = CodeMirror.xmlHints[path];
 
-            if(typeof hints === 'undefined')
+            if (typeof hints === 'undefined')
                 hints = [''];
             else {
                 hints = hints.slice(0);
                 for (var i = hints.length - 1; i >= 0; i--) {
-                    if(hints[i].indexOf(typed) != 0)
+                    if (hints[i].indexOf(typed) != 0)
                         hints.splice(i, 1);
                 }
             }
 
             return {
                 list: hints,
-                from: { line: cursor.line, ch: cursor.ch - typed.length },
+                from: {line: cursor.line, ch: cursor.ch - typed.length},
                 to: cursor
             };
-        };
+        }
+        ;
     };
 
-    var getActiveElement = function(codeMirror, text) {
+    var getActiveElement = function (codeMirror, text) {
 
         var element = '';
 
-        if(text.length >= 0) {
+        if (text.length >= 0) {
 
             var regex = new RegExp('<([^!?][^\\s/>]*).*?>', 'g');
 
@@ -84,18 +86,14 @@
 
                 var item = matches[i];
 
-                if (item.tag[0] == '/')
-                {
+                if (item.tag[0] == '/') {
                     skip++;
                 }
-                else if (item.selfclose == false)
-                {
-                    if (skip > 0)
-                    {
+                else if (item.selfclose == false) {
+                    if (skip > 0) {
                         skip--;
                     }
-                    else
-                    {
+                    else {
                         element = '<' + item.tag + '>' + element;
                     }
                 }
@@ -107,21 +105,20 @@
         return element;
     };
 
-    var getOpenTag = function(text) {
+    var getOpenTag = function (text) {
 
         var open = text.lastIndexOf('<');
         var close = text.lastIndexOf('>');
 
-        if (close < open)
-        {
+        if (close < open) {
             text = text.slice(open);
 
-            if(text != '<') {
+            if (text != '<') {
 
                 var space = text.indexOf(' ');
-                if(space < 0)
+                if (space < 0)
                     space = text.indexOf('\t');
-                if(space < 0)
+                if (space < 0)
                     space = text.indexOf('\n');
 
                 if (space < 0)
