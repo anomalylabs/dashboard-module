@@ -1,7 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Command;
 
 use Anomaly\DashboardModule\DashboardModule;
-use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Filesystem\Filesystem;
