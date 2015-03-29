@@ -32,7 +32,7 @@ class PublishAssets implements SelfHandling
 
         foreach ($libraries as $library) {
 
-            $target = $container->make('streams.asset.path') . '/' . $library;
+            $target = $container->make('Anomaly\Streams\Platform\Application\Application')->getAssetsPath($library);
 
             if (!is_dir($target)) {
                 $files->copyDirectory($module->getPath('resources/js/' . $library), $target);
