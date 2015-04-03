@@ -14,6 +14,13 @@ class DashboardModule extends Module
 {
 
     /**
+     * The module icon.
+     *
+     * @var string
+     */
+    protected $icon = 'dashboard';
+
+    /**
      * The module sections.
      *
      * @var array
