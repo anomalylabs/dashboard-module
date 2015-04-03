@@ -38,6 +38,6 @@ class SetDefaultOptions implements SelfHandling
     {
         $widget = $this->extension->getWidget();
 
-        $widget->setOption('title', $widget->getOption('title', $this->extension->getName()));
+        $widget->setOption('title', $widget->getOption('title', $this->extension->getTitle()));
     }
 }

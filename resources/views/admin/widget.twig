@@ -1,9 +1,13 @@
-<div class="ui segment">
+<div class="panel">
 
-    <h3 class="header">
-        {{ trans(options.title) }}
-    </h3>
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{ trans(options.title) }}
+        </h3>
+    </div>
 
-    {{ content|raw }}
+    <div class="panel-body">
+        {{ content|raw }}
+    </div>
 
 </div>

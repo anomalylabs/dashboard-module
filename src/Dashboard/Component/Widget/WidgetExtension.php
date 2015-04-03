@@ -121,6 +121,16 @@ class WidgetExtension extends Extension
     }
 
     /**
+     * Get the widget title.
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->getNamespace('addon.title');
+    }
+
+    /**
      * Render the widget.
      *
      * @return string
