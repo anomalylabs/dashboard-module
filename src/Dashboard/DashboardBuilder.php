@@ -60,7 +60,7 @@ class DashboardBuilder
 
         $data = $this->dashboard->getData();
 
-        $this->dashboard->setContent(view($this->dashboard->getOption('dashboard_view'), $data));
+        $this->dashboard->setContent(view($this->dashboard->getOption('dashboard_view'), $data->all()));
     }
 
     /**

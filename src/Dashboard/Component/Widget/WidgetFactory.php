@@ -1,6 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
 
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
+use Anomaly\Streams\Platform\Support\Hydrator;
 
 /**
  * Class WidgetFactory
@@ -19,13 +20,22 @@ class WidgetFactory
     protected $widgets;
 
     /**
+     * The hydrator utility.
+     *
+     * @var Hydrator
+     */
+    protected $hydrator;
+
+    /**
      * Create a new WidgetFactory.
      *
      * @param ExtensionCollection $widgets
+     * @param Hydrator            $hydrator
      */
-    public function __construct(ExtensionCollection $widgets)
+    public function __construct(ExtensionCollection $widgets, Hydrator $hydrator)
     {
-        $this->widgets = $widgets;
+        $this->widgets  = $widgets;
+        $this->hydrator = $hydrator;
     }
 
     /**
@@ -39,26 +49,8 @@ class WidgetFactory
             $widget = app()->make(array_get($parameters, 'widget'));
         }
 
-        $this->hydrate($widget, $parameters);
+        $this->hydrator->hydrate($widget, $parameters);
 
         return $widget;
-    }
-
-    /**
-     * Hydrate the widget with it's remaining parameters.
-     *
-     * @param WidgetExtension $widget
-     * @param array           $parameters
-     */
-    protected function hydrate(WidgetExtension $widget, array $parameters)
-    {
-        foreach ($parameters as $parameter => $value) {
-
-            $method = camel_case('set_' . $parameter);
-
-            if (method_exists($widget, $method)) {
-                $widget->{$method}($value);
-            }
-        }
     }
 }
