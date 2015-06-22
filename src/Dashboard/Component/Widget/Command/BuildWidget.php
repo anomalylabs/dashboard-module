@@ -39,6 +39,7 @@ class BuildWidget implements SelfHandling
      */
     public function handle()
     {
+        $this->dispatch(new SetWidgetOptions($this->extension));
         $this->dispatch(new SetDefaultProperties($this->extension));
         $this->dispatch(new SetDefaultOptions($this->extension));
     }

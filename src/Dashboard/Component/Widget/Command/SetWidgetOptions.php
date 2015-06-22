@@ -1,6 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
 
 use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
+use Anomaly\Streams\Platform\Support\Evaluator;
+use Anomaly\Streams\Platform\Support\Resolver;
 use Illuminate\Contracts\Bus\SelfHandling;
 
 /**
@@ -11,7 +13,7 @@ use Illuminate\Contracts\Bus\SelfHandling;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
  */
-class SetDefaultOptions implements SelfHandling
+class SetWidgetOptions implements SelfHandling
 {
 
     /**
@@ -33,18 +35,23 @@ class SetDefaultOptions implements SelfHandling
 
     /**
      * Handle the command.
+     *
+     * @param Resolver  $resolver
+     * @param Evaluator $evaluator
      */
-    public function handle()
+    public function handle(Resolver $resolver, Evaluator $evaluator)
     {
+        $arguments = ['extension' => $this->extension];
+
         $widget = $this->extension->getWidget();
 
-        /**
-         * Set the default options handler based
-         * on the extension class. Defaulting to
-         * no handler.
-         */
-        if (!$widget->getOption('title')) {
-            $widget->setOption('title', $this->extension->getTitle());
+        $options = $this->extension->getOptions();
+
+        $options = $resolver->resolve($options, $arguments);
+        $options = $evaluator->evaluate($options, $arguments);
+
+        foreach ($options as $key => $value) {
+            $widget->setOption($key, $value);
         }
     }
 }

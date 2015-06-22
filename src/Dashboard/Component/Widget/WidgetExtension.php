@@ -26,6 +26,13 @@ class WidgetExtension extends Extension
     protected $handler = null;
 
     /**
+     * The widget options.
+     *
+     * @var array
+     */
+    protected $options = [];
+
+    /**
      * The widget object.
      *
      * @var Widget
@@ -121,6 +128,55 @@ class WidgetExtension extends Extension
     }
 
     /**
+     * Get the options.
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Get an option.
+     *
+     * @param      $key
+     * @param null $default
+     * @return mixed
+     */
+    public function getOption($key, $default = null)
+    {
+        return array_get($this->options, $key, $default);
+    }
+
+    /**
+     * Set the options.
+     *
+     * @param $options
+     * @return $this
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    /**
+     * Set an option.
+     *
+     * @param      $key
+     * @param      $value
+     * @return $this
+     */
+    public function setOption($key, $value)
+    {
+        array_set($this->options, $key, $value);
+
+        return $this;
+    }
+
+    /**
      * Get the widget title.
      *
      * @return string
@@ -128,6 +184,18 @@ class WidgetExtension extends Extension
     public function getTitle()
     {
         return $this->getNamespace('addon.title');
+    }
+
+    /**
+     * Get a widget option.
+     *
+     * @param      $key
+     * @param null $default
+     * @return mixed
+     */
+    public function getWidgetOption($key, $default = null)
+    {
+        return $this->widget->getOption($key, $default);
     }
 
     /**
