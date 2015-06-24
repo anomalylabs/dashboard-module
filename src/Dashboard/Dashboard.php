@@ -2,7 +2,7 @@
 
 use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
-use Illuminate\Support\Collection;
+use Anomaly\Streams\Platform\Support\Collection;
 use Illuminate\View\View;
 
 /**

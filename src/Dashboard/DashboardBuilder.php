@@ -2,6 +2,7 @@
 
 use Anomaly\DashboardModule\Dashboard\Command\BuildDashboard;
 use Anomaly\DashboardModule\Dashboard\Command\LoadDashboard;
+use Anomaly\Streams\Platform\Support\Collection;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
@@ -23,6 +24,13 @@ class DashboardBuilder
      * @var string|array
      */
     protected $widgets = 'Anomaly\DashboardModule\Dashboard\DashboardWidgets@handle';
+
+    /**
+     * The dashboard options.
+     *
+     * @var array
+     */
+    protected $options = [];
 
     /**
      * The dashboard object.
@@ -114,6 +122,65 @@ class DashboardBuilder
         $this->widgets = $widgets;
 
         return $this;
+    }
+
+    /**
+     * Get the options.
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Get an option.
+     *
+     * @param      $key
+     * @param null $default
+     * @return mixed
+     */
+    public function getOption($key, $default = null)
+    {
+        return array_get($this->options, $key, $default);
+    }
+
+    /**
+     * Set the options.
+     *
+     * @param array $options
+     * @return $this
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    /**
+     * Set an option.
+     *
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function setOption($key, $value)
+    {
+        array_set($this->options, $key, $value);
+
+        return $this;
+    }
+
+    /**
+     * Get the options from the dashboard.
+     *
+     * @return Collection
+     */
+    public function getDashboardOptions()
+    {
+        return $this->dashboard->getOptions();
     }
 
     /**

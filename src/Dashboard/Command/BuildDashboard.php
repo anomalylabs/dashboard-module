@@ -40,6 +40,7 @@ class BuildDashboard implements SelfHandling
      */
     public function handle()
     {
+        $this->dispatch(new SetDashboardOptions($this->builder));
         $this->dispatch(new SetDefaultOptions($this->builder));
         $this->dispatch(new BuildWidgets($this->builder));
     }
