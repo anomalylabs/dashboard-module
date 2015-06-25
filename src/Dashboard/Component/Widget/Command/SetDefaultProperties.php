@@ -36,10 +36,10 @@ class SetDefaultProperties implements SelfHandling
      */
     public function handle()
     {
-        if ($this->extension->getHandler() === null) {
-            $this->extension->setHandler(
-                substr(get_class($this->extension), 0, -9) . 'Handler@handle'
-            ); // Replace "Extension with Handler@handle"
+        if ($this->extension->getLoader() === null) {
+            $this->extension->setLoader(
+                substr(get_class($this->extension), 0, -9) . 'Loader@handle'
+            ); // Replace "Extension with Loader@handle"
         }
     }
 }

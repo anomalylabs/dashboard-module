@@ -3,6 +3,7 @@
 use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\BuildWidget;
 use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidget;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
+use Anomaly\Streams\Platform\Support\Collection;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
@@ -19,11 +20,11 @@ class WidgetExtension extends Extension
     use DispatchesCommands;
 
     /**
-     * The widget handler.
+     * The widget loader.
      *
      * @var null|string
      */
-    protected $handler = null;
+    protected $loader = null;
 
     /**
      * The widget options.
@@ -95,24 +96,24 @@ class WidgetExtension extends Extension
     }
 
     /**
-     * Get the widget handler.
+     * Get the widget loader.
      *
      * @return null|string
      */
-    public function getHandler()
+    public function getLoader()
     {
-        return $this->handler;
+        return $this->loader;
     }
 
     /**
-     * Set the widget handler.
+     * Set the widget loader.
      *
-     * @param null|string $handler
+     * @param null|string $loader
      * @return $this
      */
-    public function setHandler($handler)
+    public function setLoader($loader)
     {
-        $this->handler = $handler;
+        $this->loader = $loader;
 
         return $this;
     }
@@ -196,6 +197,30 @@ class WidgetExtension extends Extension
     public function getWidgetOption($key, $default = null)
     {
         return $this->widget->getOption($key, $default);
+    }
+
+    /**
+     * Add data to the widget.
+     *
+     * @param $key
+     * @param $data
+     * @return $this
+     */
+    public function addWidgetData($key, $data)
+    {
+        $this->widget->addData($key, $data);
+
+        return $this;
+    }
+
+    /**
+     * Get the widget's data.
+     *
+     * @return Collection
+     */
+    public function getWidgetData()
+    {
+        return $this->widget->getData();
     }
 
     /**
