@@ -1,7 +1,7 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
+<?php namespace Anomaly\DashboardModule\Widget;
 
-use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\BuildWidget;
-use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidget;
+use Anomaly\DashboardModule\Widget\Command\BuildWidget;
+use Anomaly\DashboardModule\Widget\Command\LoadWidget;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
 use Anomaly\Streams\Platform\Support\Collection;
 use Illuminate\Foundation\Bus\DispatchesCommands;
@@ -12,7 +12,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Widget
+ * @package       Anomaly\DashboardModule\Widget
  */
 class WidgetExtension extends Extension
 {

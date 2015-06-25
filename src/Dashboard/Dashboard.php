@@ -1,7 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard;
 
-use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
+use Anomaly\DashboardModule\Widget\WidgetExtension;
 use Anomaly\Streams\Platform\Support\Collection;
 use Illuminate\View\View;
 

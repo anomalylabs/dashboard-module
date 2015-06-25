@@ -1,6 +1,6 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget\Command;
+<?php namespace Anomaly\DashboardModule\Widget\Command;
 
-use Anomaly\DashboardModule\Dashboard\Component\Widget\WidgetExtension;
+use Anomaly\DashboardModule\Widget\WidgetExtension;
 use Illuminate\Contracts\Bus\SelfHandling;
 
 /**
@@ -9,7 +9,7 @@ use Illuminate\Contracts\Bus\SelfHandling;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Widget\Command
+ * @package       Anomaly\DashboardModule\Widget\Command
  */
 class SetDefaultOptions implements SelfHandling
 {

@@ -1,4 +1,4 @@
-<?php namespace Anomaly\DashboardModule\Dashboard\Component\Widget;
+<?php namespace Anomaly\DashboardModule\Widget;
 
 use Illuminate\Support\Collection;
 
@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\DashboardModule\Dashboard\Component\Widget
+ * @package       Anomaly\DashboardModule\Widget
  */
 class Widget
 {
