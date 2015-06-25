@@ -40,6 +40,15 @@ class LoadDashboard implements SelfHandling
      */
     public function handle()
     {
-        $this->dispatch(new LoadWidgets($this->dashboard));
+
+        /**
+         * Make all the widgets before
+         * sending them to the dashboard.
+         */
+        foreach ($this->dashboard->getWidgets() as $widget) {
+            $widget->make();
+        }
+
+        $this->dashboard->addData('widgets', $this->dashboard->getWidgets());
     }
 }
