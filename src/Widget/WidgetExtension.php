@@ -200,6 +200,20 @@ class WidgetExtension extends Extension
     }
 
     /**
+     * Set a widget option value.
+     *
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function setWidgetOption($key, $value)
+    {
+        $this->widget->setOption($key, $value);
+
+        return $this;
+    }
+
+    /**
      * Add data to the widget.
      *
      * @param $key

@@ -39,6 +39,9 @@ class LoadWidget implements SelfHandling
      */
     public function handle(Container $container)
     {
-        $container->call($this->extension->getLoader(), ['extension' => $this->extension]);
+        $container->call(
+            $this->extension->getLoader(),
+            ['extension' => $this->extension, 'widget' => $this->extension->getWidget()]
+        );
     }
 }
