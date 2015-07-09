@@ -205,4 +205,18 @@ class DashboardBuilder
     {
         $this->dashboard->setOption($key, $value);
     }
+
+    /**
+     * Add data to the dashboard.
+     *
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function addDashboardData($key, $value)
+    {
+        $this->dashboard->addData($key, $value);
+
+        return $this;
+    }
 }
