@@ -45,7 +45,8 @@ class SetWidgetOptions implements SelfHandling
 
         $widget = $this->extension->getWidget();
 
-        $options = $this->extension->getOptions();
+        $options = $widget->getOptions();
+        $options = array_merge($options->all(), $this->extension->getOptions());
 
         $options = $resolver->resolve($options, $arguments);
         $options = $evaluator->evaluate($options, $arguments);
