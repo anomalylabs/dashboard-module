@@ -7,4 +7,4 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4099a034-ce40-4c0e-b58e-966415aa6833/small.png)](https://insight.sensiolabs.com/projects/4099a034-ce40-4c0e-b58e-966415aa6833)
 
-System information at a glance.
+A system dashboard and report manager.

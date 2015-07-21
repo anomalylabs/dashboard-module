@@ -2,7 +2,6 @@
 
 use Anomaly\DashboardModule\Command\PublishAssets;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
-use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
  * Class DashboardModuleServiceProvider
@@ -15,7 +14,14 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 class DashboardModuleServiceProvider extends AddonServiceProvider
 {
 
-    use DispatchesCommands;
+    /**
+     * The addon routes.
+     *
+     * @var array
+     */
+    protected $routes = [
+        'admin/dashboard' => 'Anomaly\DashboardModule\Http\Controller\Admin\DashboardController@index'
+    ];
 
     /**
      * The singleton bindings.
@@ -24,15 +30,6 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
      */
     protected $singletons = [
         'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface' => 'Anomaly\DashboardModule\Dashboard\DashboardRepository'
-    ];
-
-    /**
-     * The addon routes.
-     *
-     * @var array
-     */
-    protected $routes = [
-        'admin/dashboard' => 'Anomaly\DashboardModule\Http\Controller\Admin\DashboardController@index'
     ];
 
     /**

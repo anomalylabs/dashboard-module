@@ -1,9 +1,10 @@
 <?php
 
 return [
-    'name'        => 'Dashboard',
-    'description' => 'System information at a glance.',
+    'title'       => 'Dashboard',
+    'name'        => 'Dashboard Module',
+    'description' => 'A system dashboard and report manager.',
     'section'     => [
-        'dashboard' => 'Dashboard',
-    ],
+        'dashboard' => 'Dashboard'
+    ]
 ];

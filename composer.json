@@ -1,15 +1,15 @@
 {
     "name": "anomaly/dashboard-module",
     "type": "streams-addon",
-    "description": "System information at a glance.",
-    "version": "1.0.0",
-    "license": "MIT",
+    "description": "A system dashboard and report manager.",
     "keywords": [
-        "streams-addon",
-        "dashboard",
-        "laravel"
+        "streams field type",
+        "streams addon",
+        "field type"
     ],
     "homepage": "http://anomaly.is/",
+    "version": "1.0.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "AnomalyLabs, Inc.",
@@ -28,8 +28,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-1.0/master": "1.0.x-dev"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
