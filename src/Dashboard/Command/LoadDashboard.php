@@ -1,6 +1,5 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Command;
 
-use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidgets;
 use Anomaly\DashboardModule\Dashboard\Dashboard;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Foundation\Bus\DispatchesJobs;
