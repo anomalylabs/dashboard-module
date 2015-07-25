@@ -3,7 +3,7 @@
 use Anomaly\DashboardModule\Dashboard\Command\BuildDashboard;
 use Anomaly\DashboardModule\Dashboard\Command\LoadDashboard;
 use Anomaly\Streams\Platform\Support\Collection;
-use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
  * Class DashboardBuilder
@@ -16,7 +16,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 class DashboardBuilder
 {
 
-    use DispatchesCommands;
+    use DispatchesJobs;
 
     /**
      * The dashboard widgets.

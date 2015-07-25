@@ -3,7 +3,7 @@
 use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\LoadWidgets;
 use Anomaly\DashboardModule\Dashboard\Dashboard;
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
  * Class LoadDashboard
@@ -16,7 +16,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 class LoadDashboard implements SelfHandling
 {
 
-    use DispatchesCommands;
+    use DispatchesJobs;
 
     /**
      * The dashboard object.

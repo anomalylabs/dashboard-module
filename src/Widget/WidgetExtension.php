@@ -4,7 +4,7 @@ use Anomaly\DashboardModule\Widget\Command\BuildWidget;
 use Anomaly\DashboardModule\Widget\Command\LoadWidget;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
 use Anomaly\Streams\Platform\Support\Collection;
-use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
  * Class WidgetExtension
@@ -17,7 +17,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 class WidgetExtension extends Extension
 {
 
-    use DispatchesCommands;
+    use DispatchesJobs;
 
     /**
      * The widget loader.

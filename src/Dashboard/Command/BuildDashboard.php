@@ -3,7 +3,7 @@
 use Anomaly\DashboardModule\Dashboard\Component\Widget\Command\BuildWidgets;
 use Anomaly\DashboardModule\Dashboard\DashboardBuilder;
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
  * Class BuildDashboard
@@ -16,7 +16,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 class BuildDashboard implements SelfHandling
 {
 
-    use DispatchesCommands;
+    use DispatchesJobs;
 
     /**
      * The dashboard builder.
