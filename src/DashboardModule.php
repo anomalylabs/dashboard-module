@@ -26,7 +26,31 @@ class DashboardModule extends Module
      * @var array
      */
     protected $sections = [
-        'dashboard'
+        'dashboards' => [
+            'buttons' => [
+                'new_dashboard' => [
+                    'enabled' => 'admin/dashboard/manage'
+                ],
+                'manage'        => [
+                    'enabled' => 'admin/dashboard/view/*'
+                ],
+                'new_widget'    => [
+                    'data-toggle' => 'modal',
+                    'data-target' => '#modal',
+                    'href'        => 'admin/dashboard/widgets/choose',
+                    'enabled'     => 'admin/dashboard/view/*',
+                ],
+            ]
+        ],
+        'widgets'    => [
+            'buttons' => [
+                'new_widget' => [
+                    'data-toggle' => 'modal',
+                    'data-target' => '#modal',
+                    'href'        => 'admin/dashboard/widgets/choose'
+                ]
+            ]
+        ]
     ];
 
 }

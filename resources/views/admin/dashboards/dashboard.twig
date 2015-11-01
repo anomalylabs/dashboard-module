@@ -1,0 +1,14 @@
+{% extends template.layout ?: "theme::layouts/default" %}
+
+{% block content %}
+    <div class="inner">
+
+        <div class="container-fluid">
+
+            {{ view('module::admin/dashboards/partials/heading', {'dashboard': dashboard}) }}
+            {{ view('module::admin/dashboards/partials/columns', {'dashboard': dashboard}) }}
+
+        </div>
+
+    </div>
+{% endblock %}

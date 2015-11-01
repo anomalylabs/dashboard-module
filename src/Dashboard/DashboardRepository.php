@@ -2,8 +2,7 @@
 
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
-use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
-use Anomaly\Streams\Platform\Addon\Module\ModuleCollection;
+use Anomaly\Streams\Platform\Entry\EntryRepository;
 
 /**
  * Class DashboardRepository
@@ -13,57 +12,44 @@ use Anomaly\Streams\Platform\Addon\Module\ModuleCollection;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard
  */
-class DashboardRepository implements DashboardRepositoryInterface
+class DashboardRepository extends EntryRepository implements DashboardRepositoryInterface
 {
 
     /**
-     * The module collection.
+     * The entry model.
      *
-     * @var ModuleCollection
+     * @var DashboardModel
      */
-    protected $modules;
-
-    /**
-     * The extension collection.
-     *
-     * @var ExtensionCollection
-     */
-    protected $extensions;
+    protected $model;
 
     /**
      * Create a new DashboardRepository instance.
      *
-     * @param ExtensionCollection $extensions
-     * @param ModuleCollection    $modules
+     * @param DashboardModel $model
      */
-    public function __construct(ExtensionCollection $extensions, ModuleCollection $modules)
+    public function __construct(DashboardModel $model)
     {
-        $this->modules    = $modules;
-        $this->extensions = $extensions;
+        $this->model = $model;
     }
 
     /**
-     * Get a dashboard.
+     * Return only allowed dashboards.
      *
-     * @param $dashboard
-     * @return DashboardInterface
+     * @return DashboardCollection
      */
-    public function get($dashboard)
+    public function allowed()
     {
-        $module = $this->modules->active();
-
-        return $this->extensions->get($module->getNamespace('dashboard.' . $dashboard));
+        return $this->model->all()->allowed();
     }
 
     /**
-     * Get the default dashboard.
+     * Find a dashboard by it's slug.
      *
-     * @return DashboardInterface
+     * @param $slug
+     * @return null|DashboardInterface
      */
-    public function getDefault()
+    public function findBySlug($slug)
     {
-        $module = $this->modules->active();
-
-        return $this->extensions->search($module->getNamespace('dashboard.*'))->first();
+        return $this->model->where('slug', $slug)->first();
     }
 }

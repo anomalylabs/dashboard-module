@@ -1,0 +1,15 @@
+{% set widgets = dashboard.widgets.allowed() %}
+
+<div class="row">
+    {% for span in dashboard.layout|split('-') %}
+        <div class="col-lg-{{ span }}">
+
+            {% set column = widgets.column(loop.index, loop.last) %}
+
+            {% for widget in column %}
+                {{ widget.output()|raw }}
+            {% endfor %}
+
+        </div>
+    {% endfor %}
+</div>

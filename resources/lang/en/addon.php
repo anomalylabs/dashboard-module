@@ -5,6 +5,7 @@ return [
     'name'        => 'Dashboard Module',
     'description' => 'A system dashboard and report manager.',
     'section'     => [
-        'dashboard' => 'Dashboard'
+        'dashboards' => 'Dashboards',
+        'widgets'    => 'Widgets'
     ]
 ];

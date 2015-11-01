@@ -1,5 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Dashboard\Contract;
 
+use Anomaly\DashboardModule\Dashboard\DashboardCollection;
+use Anomaly\Streams\Platform\Entry\Contract\EntryRepositoryInterface;
+
 /**
  * Interface DashboardRepositoryInterface
  *
@@ -8,21 +11,21 @@
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\DashboardModule\Dashboard\Contract
  */
-interface DashboardRepositoryInterface
+interface DashboardRepositoryInterface extends EntryRepositoryInterface
 {
 
     /**
-     * Get a dashboard.
+     * Return only allowed dashboards.
      *
-     * @param $dashboard
-     * @return DashboardInterface
+     * @return DashboardCollection
      */
-    public function get($dashboard);
+    public function allowed();
 
     /**
-     * Get the default dashboard.
+     * Find a dashboard by it's slug.
      *
-     * @return DashboardInterface
+     * @param $slug
+     * @return null|DashboardInterface
      */
-    public function getDefault();
+    public function findBySlug($slug);
 }
