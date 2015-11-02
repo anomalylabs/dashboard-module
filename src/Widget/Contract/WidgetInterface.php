@@ -17,6 +17,13 @@ interface WidgetInterface extends EntryInterface
 {
 
     /**
+     * Get the pinned flag.
+     *
+     * @return bool
+     */
+    public function isPinned();
+
+    /**
      * Get the column.
      *
      * @return int

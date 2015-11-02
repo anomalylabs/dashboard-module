@@ -46,6 +46,16 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
     }
 
     /**
+     * Get the pinned flag.
+     *
+     * @return bool
+     */
+    public function isPinned()
+    {
+        return $this->pinned;
+    }
+
+    /**
      * Get the column.
      *
      * @return int

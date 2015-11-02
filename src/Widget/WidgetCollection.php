@@ -35,6 +35,21 @@ class WidgetCollection extends EntryCollection
     }
 
     /**
+     * Return only widgets that
+     * are pinned to the top.
+     *
+     * @return static
+     */
+    public function pinned()
+    {
+        return $this->filter(
+            function (WidgetInterface $widget) {
+                return $widget->isPinned();
+            }
+        );
+    }
+
+    /**
      * Return only widgets in
      * the provided column.
      *
@@ -45,6 +60,10 @@ class WidgetCollection extends EntryCollection
     {
         return $this->filter(
             function (WidgetInterface $widget) use ($column, $over) {
+
+                if ($widget->isPinned()) {
+                    return false;
+                }
 
                 if ($widget->getColumn() == $column) {
                     return true;
