@@ -40,7 +40,7 @@ class WidgetsController extends AdminController
     {
         return $this->view->make(
             'module::ajax/choose_widget',
-            ['widgets' => $extensions->search('anomaly.module.dashboard::widget.*')]
+            ['extensions' => $extensions->search('anomaly.module.dashboard::widget.*')]
         );
     }
 
@@ -60,7 +60,7 @@ class WidgetsController extends AdminController
         ConfigurationFormBuilder $configuration
     ) {
         /* @var WidgetExtension $extension */
-        $extension = $extensions->get($this->request->get('widget'));
+        $extension = $extensions->get($this->request->get('extension'));
 
         $form->addForm('widget', $widget->setExtension($extension));
         $form->addForm('configuration', $configuration->setEntry($extension->getNamespace()));
