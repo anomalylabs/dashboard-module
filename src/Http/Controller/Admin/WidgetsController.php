@@ -1,6 +1,8 @@
 <?php namespace Anomaly\DashboardModule\Http\Controller\Admin;
 
 use Anomaly\ConfigurationModule\Configuration\Form\ConfigurationFormBuilder;
+use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
+use Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface;
 use Anomaly\DashboardModule\Widget\Extension\Form\WidgetExtensionFormBuilder;
 use Anomaly\DashboardModule\Widget\Extension\WidgetExtension;
 use Anomaly\DashboardModule\Widget\Form\WidgetFormBuilder;
@@ -71,12 +73,30 @@ class WidgetsController extends AdminController
     /**
      * Edit an existing entry.
      *
-     * @param WidgetFormBuilder $form
-     * @param                   $id
+     * @param ExtensionCollection                          $extensions
+     * @param WidgetExtensionFormBuilder|WidgetFormBuilder $form
+     * @param WidgetFormBuilder                            $widget
+     * @param ConfigurationFormBuilder                     $configuration
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(WidgetFormBuilder $form, $id)
-    {
-        return $form->render($id);
+    public function edit(
+        ExtensionCollection $extensions,
+        WidgetExtensionFormBuilder $form,
+        WidgetFormBuilder $widget,
+        ConfigurationFormBuilder $configuration,
+        WidgetRepositoryInterface $widgets,
+        $id
+    ) {
+        /* @var WidgetInterface $entry */
+        $entry = $widgets->find($id);
+
+        /* @var WidgetExtension $extension */
+        $extension = $entry->getExtension();
+
+        $form->setEntry($id);
+        $form->addForm('widget', $widget->setEntry($id));
+        $form->addForm('configuration', $configuration->setScope($id)->setEntry($extension->getNamespace()));
+
+        return $form->render();
     }
 }
