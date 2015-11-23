@@ -28,7 +28,9 @@ class WidgetCollection extends EntryCollection
         }
 
         return $this->filter(
-            function (WidgetInterface $widget) use ($user) {
+            function ($widget) use ($user) {
+
+                /* @var WidgetInterface $widget */
                 return $user->hasAnyRole($widget->getAllowedRoles());
             }
         );
@@ -43,7 +45,9 @@ class WidgetCollection extends EntryCollection
     public function pinned()
     {
         return $this->filter(
-            function (WidgetInterface $widget) {
+            function ($widget) {
+
+                /* @var WidgetInterface $widget */
                 return $widget->isPinned();
             }
         );
@@ -59,8 +63,9 @@ class WidgetCollection extends EntryCollection
     public function column($column, $over = false)
     {
         return $this->filter(
-            function (WidgetInterface $widget) use ($column, $over) {
+            function ($widget) use ($column, $over) {
 
+                /* @var WidgetInterface $widget */
                 if ($widget->isPinned()) {
                     return false;
                 }

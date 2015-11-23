@@ -29,17 +29,20 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'title'     => [
+        'title'       => [
             'required'     => true,
             'translatable' => true
         ],
-        'extension' => [
+        'description' => [
+            'translatable' => true
+        ],
+        'extension'   => [
             'required' => true
         ],
-        'column'    => [
+        'column'      => [
             'required' => true
         ],
-        'dashboard' => [
+        'dashboard'   => [
             'required' => true
         ],
         'allowed_roles',

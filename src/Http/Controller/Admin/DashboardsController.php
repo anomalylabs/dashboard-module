@@ -90,6 +90,8 @@ class DashboardsController extends AdminController
             abort(403);
         }
 
-        return $this->view->make('module::admin/dashboards/dashboard', compact('dashboard'));
+        $widgets = $dashboard->getWidgets();
+
+        return $this->view->make('module::admin/dashboards/dashboard', compact('dashboard', 'widgets'));
     }
 }
