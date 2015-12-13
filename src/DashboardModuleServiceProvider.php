@@ -40,12 +40,4 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
         'Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface'       => 'Anomaly\DashboardModule\Widget\WidgetRepository',
         'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface' => 'Anomaly\DashboardModule\Dashboard\DashboardRepository'
     ];
-
-    /**
-     * Boot the service provider.
-     */
-    public function boot()
-    {
-        $this->dispatch(new PublishAssets());
-    }
 }
