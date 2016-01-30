@@ -17,6 +17,15 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
 {
 
     /**
+     * Eager loaded relations.
+     *
+     * @var array
+     */
+    protected $with = [
+        'translations'
+    ];
+
+    /**
      * Get the slug.
      *
      * @return string
@@ -43,7 +52,7 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
      */
     public function getAllowedRoles()
     {
-        return $this->allowedRoles()->get();
+        return $this->allowed_roles;
     }
 
     /**

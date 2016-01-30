@@ -29,7 +29,10 @@ class DashboardCollection extends EntryCollection
 
         return $this->filter(
             function (DashboardInterface $dashboard) use ($user) {
-                return $user->hasAnyRole($dashboard->getAllowedRoles());
+
+                $roles = $dashboard->getAllowedRoles();
+
+                return $roles->isEmpty() ?: $user->hasAnyRole($roles);
             }
         );
     }

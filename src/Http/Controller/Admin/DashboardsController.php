@@ -86,7 +86,9 @@ class DashboardsController extends AdminController
         /* @var UserInterface $user */
         $user = $guard->user();
 
-        if (!$user->hasAnyRole($dashboard->getAllowedRoles())) {
+        $roles = $dashboard->getAllowedRoles();
+
+        if (!$roles->isEmpty() && !$user->hasAnyRole($dashboard->getAllowedRoles())) {
             abort(403);
         }
 
