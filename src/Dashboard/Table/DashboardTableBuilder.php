@@ -20,7 +20,7 @@ class DashboardTableBuilder extends TableBuilder
      */
     protected $filters = [
         'search' => [
-            'fields' => [
+            'columns' => [
                 'name',
                 'slug',
                 'description'

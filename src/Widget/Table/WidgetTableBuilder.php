@@ -20,8 +20,10 @@ class WidgetTableBuilder extends TableBuilder
      */
     protected $filters = [
         'search' => [
-            'title',
-            'description'
+            'columns' => [
+                'title',
+                'description'
+            ]
         ],
         'dashboard',
         'extension'
