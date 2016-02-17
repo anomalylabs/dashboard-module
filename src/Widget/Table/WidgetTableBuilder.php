@@ -20,7 +20,7 @@ class WidgetTableBuilder extends TableBuilder
      */
     protected $filters = [
         'search' => [
-            'columns' => [
+            'fields' => [
                 'title',
                 'description'
             ]
