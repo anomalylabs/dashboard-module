@@ -27,9 +27,9 @@ class WidgetExtensionFormSections
                     'fields' => function () use ($widget) {
                         return array_map(
                             function ($field) {
-                                return 'widget_' . $field['field'];
+                                return 'widget_' . $field;
                             },
-                            $widget->getFields()
+                            $widget->getFormFieldSlugs()
                         );
                     }
                 ],
@@ -37,9 +37,9 @@ class WidgetExtensionFormSections
                     'fields' => function () use ($configuration) {
                         return array_map(
                             function ($field) {
-                                return 'configuration_' . $field['field'];
+                                return 'configuration_' . $field;
                             },
-                            $configuration->getFields()
+                            $configuration->getFormFieldSlugs()
                         );
                     }
                 ]

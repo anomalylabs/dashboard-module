@@ -19,7 +19,13 @@ class DashboardTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $filters = [
-        'name'
+        'search' => [
+            'fields' => [
+                'name',
+                'slug',
+                'description'
+            ]
+        ]
     ];
 
     /**
@@ -28,7 +34,8 @@ class DashboardTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $columns = [
-        'entry.edit_link',
+        'name',
+        'slug',
         'description'
     ];
 
@@ -38,6 +45,7 @@ class DashboardTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $buttons = [
+        'edit',
         'view' => [
             'href' => 'admin/dashboard/view/{entry.slug}'
         ]

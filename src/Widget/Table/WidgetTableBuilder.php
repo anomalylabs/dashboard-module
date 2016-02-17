@@ -19,7 +19,10 @@ class WidgetTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $filters = [
-        'title',
+        'search' => [
+            'title',
+            'description'
+        ],
         'dashboard',
         'extension'
     ];
@@ -31,6 +34,7 @@ class WidgetTableBuilder extends TableBuilder
      */
     protected $columns = [
         'title',
+        'description',
         'dashboard',
         'entry.extension.title'
     ];
