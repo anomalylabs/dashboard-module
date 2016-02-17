@@ -14,15 +14,6 @@ class DashboardFormBuilder extends FormBuilder
 {
 
     /**
-     * The form buttons.
-     *
-     * @var array|string
-     */
-    protected $buttons = [
-        'cancel'
-    ];
-
-    /**
      * The form options.
      *
      * @var array
