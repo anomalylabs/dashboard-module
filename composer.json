@@ -24,10 +24,5 @@
         "psr-4": {
             "Anomaly\\DashboardModule\\": "src/"
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-1.0/master": "1.0.x-dev"
-        }
     }
 }
