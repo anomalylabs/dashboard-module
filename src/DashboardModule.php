@@ -32,8 +32,8 @@ class DashboardModule extends Module
                     'enabled' => 'admin/dashboard/manage'
                 ],
                 'manage'        => [
+                    'type'    => 'info',
                     'icon'    => 'wrench',
-                    'type'    => 'warning',
                     'enabled' => 'admin/dashboard/view/*'
                 ],
                 'new_widget'    => [

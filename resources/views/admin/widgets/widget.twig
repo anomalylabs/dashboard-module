@@ -1,9 +1,11 @@
-<div class="widget card card-cornered primary" data-id="{{ widget.id }}">
+<div class="widget card" data-id="{{ widget.id }}">
 
-    <span class="handle card-label success">{{ widget.title }}</span>
+    <span class="handle card-label card-label-success">{{ widget.title }}</span>
 
     <div class="card-block">
         {{ widget.content|raw }}
     </div>
+
+    <div class="card-corner card-corner-primary"></div>
 
 </div>
