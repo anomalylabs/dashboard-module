@@ -20,7 +20,8 @@ class AnomalyModuleDashboardCreateDashboardsStream extends Migration
     protected $stream = [
         'slug'         => 'dashboards',
         'title_column' => 'name',
-        'translatable' => true
+        'translatable' => true,
+        'sortable'     => true
     ];
 
     /**

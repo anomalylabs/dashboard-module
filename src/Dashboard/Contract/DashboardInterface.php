@@ -15,6 +15,21 @@ interface DashboardInterface extends EntryInterface
 {
 
     /**
+     * Get the active flag.
+     *
+     * @return bool
+     */
+    public function isActive();
+
+    /**
+     * Set the active flag.
+     *
+     * @param $active
+     * @return $this
+     */
+    public function setActive($active);
+
+    /**
      * Get the slug.
      *
      * @return string

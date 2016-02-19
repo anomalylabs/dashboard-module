@@ -20,7 +20,8 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
     protected $stream = [
         'slug'         => 'widgets',
         'title_column' => 'title',
-        'translatable' => true
+        'translatable' => true,
+        'sortable'     => true
     ];
 
     /**

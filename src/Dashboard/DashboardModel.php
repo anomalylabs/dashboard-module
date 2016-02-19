@@ -3,6 +3,7 @@
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
 use Anomaly\DashboardModule\Widget\WidgetModel;
 use Anomaly\Streams\Platform\Model\Dashboard\DashboardDashboardsEntryModel;
+use Anomaly\Streams\Platform\Model\EloquentCollection;
 use Anomaly\UsersModule\Role\RoleCollection;
 
 /**
@@ -17,6 +18,13 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
 {
 
     /**
+     * The active flag.
+     *
+     * @var bool
+     */
+    protected $active = false;
+
+    /**
      * Eager loaded relations.
      *
      * @var array
@@ -24,6 +32,29 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
     protected $with = [
         'translations'
     ];
+
+    /**
+     * Get the active flag.
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the active flag.
+     *
+     * @param $active
+     * @return $this
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
 
     /**
      * Get the slug.

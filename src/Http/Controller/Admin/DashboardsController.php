@@ -27,8 +27,10 @@ class DashboardsController extends AdminController
      */
     public function index(DashboardRepositoryInterface $dashboards)
     {
+        $dashboards = $dashboards->allowed();
+
         /* @var DashboardInterface $dashboard */
-        if (!$dashboard = $dashboards->allowed()->first()) {
+        if (!$dashboard = $dashboards->first()) {
             return $this->redirect->to('admin/dashboard/manage');
         }
 
@@ -79,21 +81,29 @@ class DashboardsController extends AdminController
      */
     public function view(DashboardRepositoryInterface $dashboards, Guard $guard, $dashboard)
     {
-        if (!$dashboard = $dashboards->findBySlug($dashboard)) {
+        $dashboards = $dashboards->allowed();
+
+        /* @var DashboardInterface $dashboard */
+        if (!$dashboard = $dashboards->find($dashboard)) {
             abort(404);
         }
 
-        /* @var UserInterface $user */
-        $user = $guard->user();
+        $dashboard->setActive(true);
 
+        /* @var UserInterface $user */
+        $user  = $guard->user();
         $roles = $dashboard->getAllowedRoles();
 
         if (!$roles->isEmpty() && !$user->hasAnyRole($roles)) {
             abort(403);
         }
 
-        $widgets = $dashboard->getWidgets();
-
-        return $this->view->make('module::admin/dashboards/dashboard', compact('dashboard', 'widgets'));
+        return $this->view->make(
+            'module::admin/dashboards/dashboard',
+            [
+                'dashboard'  => $dashboard,
+                'dashboards' => $dashboards
+            ]
+        );
     }
 }

@@ -11,7 +11,7 @@
     {% for span in dashboard.layout|split('-') %}
         <div class="col-lg-{{ span }}">
 
-            {% set column = widgets.column(loop.index, loop.last) %}
+            {% set column = dashboard.widgets.column(loop.index, loop.last) %}
 
             {% for widget in column %}
                 {{ widget.output()|raw }}

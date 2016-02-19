@@ -2,13 +2,12 @@
 
 {% block content %}
     <div class="inner">
-
         <div class="container-fluid">
 
-            {{ view('module::admin/dashboards/partials/heading', {'dashboard': dashboard, 'widgets': widgets}) }}
-            {{ view('module::admin/dashboards/partials/columns', {'dashboard': dashboard, 'widgets': widgets}) }}
+            {{ view('module::admin/dashboards/partials/navbar', {'dashboards': dashboards}) }}
+            {{ view('module::admin/dashboards/partials/heading', {'dashboard': dashboard}) }}
+            {{ view('module::admin/dashboards/partials/columns', {'dashboard': dashboard}) }}
 
         </div>
-
     </div>
 {% endblock %}
