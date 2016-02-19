@@ -76,6 +76,13 @@ interface WidgetInterface extends EntryInterface
     public function addData($key, $data);
 
     /**
+     * Return the widget's context.
+     *
+     * @return string
+     */
+    public function context();
+    
+    /**
      * Return the widget output.
      *
      * @return string

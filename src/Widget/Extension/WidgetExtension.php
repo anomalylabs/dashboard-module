@@ -25,6 +25,13 @@ class WidgetExtension extends Extension implements WidgetExtensionInterface
     protected $view = null;
 
     /**
+     * The contextual state.
+     *
+     * @var string
+     */
+    protected $context = 'primary';
+
+    /**
      * The widget wrapper.
      *
      * @var string
@@ -107,6 +114,29 @@ class WidgetExtension extends Extension implements WidgetExtensionInterface
     public function setWrapper($wrapper)
     {
         $this->wrapper = $wrapper;
+
+        return $this;
+    }
+
+    /**
+     * Get the contextual state.
+     *
+     * @return string
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
+     * Set the contextual state.
+     *
+     * @param $context
+     * @return $this
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
 
         return $this;
     }

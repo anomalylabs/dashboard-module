@@ -5,7 +5,7 @@ return [
         'name'   => 'Dashboards',
         'option' => [
             'read'   => 'Can access dashboards section.',
-            'write'  => 'Can create and edit dashboards.',
+            'write'  => 'Can create, edit, and rearrange dashboards.',
             'delete' => 'Can delete dashboards.'
         ]
     ],

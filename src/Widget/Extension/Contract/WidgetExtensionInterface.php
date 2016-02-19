@@ -37,6 +37,21 @@ interface WidgetExtensionInterface
     public function setView($view);
 
     /**
+     * Get the contextual state.
+     *
+     * @return string
+     */
+    public function getContext();
+
+    /**
+     * Set the contextual state.
+     *
+     * @param $context
+     * @return $this
+     */
+    public function setContext($context);
+
+    /**
      * Get the wrapper.
      *
      * @return string

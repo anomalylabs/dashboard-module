@@ -1,5 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Widget;
 
+use Anomaly\DashboardModule\Widget\Command\GetSortableFlag;
 use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
 use Anomaly\DashboardModule\Widget\Extension\Contract\WidgetExtensionInterface;
 use Anomaly\Streams\Platform\Model\Dashboard\DashboardWidgetsEntryModel;
@@ -120,6 +121,28 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
         $this->data->put($key, $data);
 
         return $this;
+    }
+
+    /**
+     * Return the sortable flag.
+     *
+     * @return bool
+     */
+    public function isSortable()
+    {
+        return $this->dispatch(new GetSortableFlag($this));
+    }
+
+    /**
+     * Return the widget's context.
+     *
+     * @return string
+     */
+    public function context()
+    {
+        $extension = $this->getExtension();
+
+        return $extension->getContext();
     }
 
     /**
