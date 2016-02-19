@@ -32,13 +32,15 @@ class AnomalyModuleDashboardCreateDashboardFields extends Migration
             'type'   => 'anomaly.field_type.select',
             'config' => [
                 'options' => [
-                    '24'      => '1',
-                    '12-12'   => '1-1',
-                    '8-8-8'   => '1-1-1',
-                    '6-12-6'  => '1-2-1',
-                    '12-6-6'  => '2-1-1',
-                    '6-6-12'  => '1-1-2',
-                    '6-6-6-6' => '1-1-1-1'
+                    '24'      => 'anomaly.module.dashboard::field.layout.option.24',
+                    '12-12'   => 'anomaly.module.dashboard::field.layout.option.12-12',
+                    '16-8'    => 'anomaly.module.dashboard::field.layout.option.16-8',
+                    '8-16'    => 'anomaly.module.dashboard::field.layout.option.8-16',
+                    '8-8-8'   => 'anomaly.module.dashboard::field.layout.option.8-8-8',
+                    '6-12-6'  => 'anomaly.module.dashboard::field.layout.option.6-12-6',
+                    '12-6-6'  => 'anomaly.module.dashboard::field.layout.option.12-6-6',
+                    '6-6-12'  => 'anomaly.module.dashboard::field.layout.option.6-6-12',
+                    '6-6-6-6' => 'anomaly.module.dashboard::field.layout.option.6-6-6-6'
                 ]
             ]
         ],
