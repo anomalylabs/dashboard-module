@@ -98,6 +98,8 @@ class DashboardsController extends AdminController
             abort(403);
         }
 
+        $this->template->set('show_banner', true);
+
         return $this->view->make(
             'module::admin/dashboards/dashboard',
             [
