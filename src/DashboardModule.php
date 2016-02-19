@@ -32,15 +32,17 @@ class DashboardModule extends Module
                     'enabled' => 'admin/dashboard/manage'
                 ],
                 'manage'        => [
-                    'type'    => 'info',
-                    'icon'    => 'wrench',
-                    'enabled' => 'admin/dashboard/view/*'
+                    'type'       => 'info',
+                    'icon'       => 'wrench',
+                    'enabled'    => 'admin/dashboard/view/*',
+                    'permission' => 'anomaly.module.dashboard::dashboards.write'
                 ],
                 'new_widget'    => [
                     'data-toggle' => 'modal',
                     'data-target' => '#modal',
-                    'href'        => 'admin/dashboard/widgets/choose',
                     'enabled'     => 'admin/dashboard/view/*',
+                    'href'        => 'admin/dashboard/widgets/choose',
+                    'permission'  => 'anomaly.module.dashboard::widgets.write'
                 ],
             ]
         ],

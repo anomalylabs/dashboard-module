@@ -45,7 +45,7 @@ class DashboardSeeder extends Seeder
                         'description' => 'This is the default dashboard for PyroCMS.'
                     ],
                     'slug'   => 'home',
-                    'layout' => '1'
+                    'layout' => '24'
                 ]
             );
     }
