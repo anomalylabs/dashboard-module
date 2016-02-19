@@ -99,4 +99,19 @@ class WidgetsController extends AdminController
 
         return $form->render();
     }
+
+    public function save(WidgetRepositoryInterface $widgets)
+    {
+        foreach (json_decode($this->request->get('columns')) as $column => $columns) {
+            foreach ($columns as $position => $widget) {
+                if ($widget = $widgets->find($widget->id)) {
+
+                    $widget->setAttribute('column', $column + 1);
+                    $widget->setAttribute('sort_order', $position + 1);
+
+                    $widgets->save($widget);
+                }
+            }
+        }
+    }
 }

@@ -1,9 +1,6 @@
-<div class="card">
+<div class="widget card card-cornered primary" data-id="{{ widget.id }}">
 
-    <div class="card-header">
-        <h4 class="card-title">{{ widget.title }}</h4>
-        <div class="text-muted">{{ widget.description }}</div>
-    </div>
+    <span class="handle card-label success">{{ widget.title }}</span>
 
     <div class="card-block">
         {{ widget.content|raw }}
