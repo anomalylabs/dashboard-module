@@ -41,10 +41,10 @@ class DashboardSeeder extends Seeder
             ->create(
                 [
                     'en'     => [
-                        'name'        => 'Home',
+                        'name'        => 'Welcome',
                         'description' => 'This is the default dashboard for PyroCMS.'
                     ],
-                    'slug'   => 'home',
+                    'slug'   => 'welcome',
                     'layout' => '24'
                 ]
             );

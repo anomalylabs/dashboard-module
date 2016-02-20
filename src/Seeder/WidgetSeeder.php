@@ -1,6 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Seeder;
 
 use Anomaly\ConfigurationModule\Configuration\Contract\ConfigurationRepositoryInterface;
+use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
 use Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 use Anomaly\XmlFeedWidgetExtension\XmlFeedWidgetExtension;
@@ -24,6 +25,13 @@ class WidgetSeeder extends Seeder
     protected $widgets;
 
     /**
+     * The dashboard repository.
+     *
+     * @var DashboardRepositoryInterface
+     */
+    protected $dashboards;
+
+    /**
      * The configuration repository.
      *
      * @var ConfigurationRepositoryInterface
@@ -33,11 +41,17 @@ class WidgetSeeder extends Seeder
     /**
      * Create a new WidgetSeeder instance.
      *
-     * @param $widgets
+     * @param WidgetRepositoryInterface        $widgets
+     * @param DashboardRepositoryInterface     $dashboards
+     * @param ConfigurationRepositoryInterface $configuration
      */
-    public function __construct(WidgetRepositoryInterface $widgets, ConfigurationRepositoryInterface $configuration)
-    {
+    public function __construct(
+        WidgetRepositoryInterface $widgets,
+        DashboardRepositoryInterface $dashboards,
+        ConfigurationRepositoryInterface $configuration
+    ) {
         $this->widgets       = $widgets;
+        $this->dashboards    = $dashboards;
         $this->configuration = $configuration;
     }
 
@@ -46,18 +60,19 @@ class WidgetSeeder extends Seeder
      */
     public function run()
     {
-        $this->widgets->getModel()->flushCache();
+        $this->widgets->truncate();
+
+        $dashboard = $this->dashboards->findBySlug('welcome');
 
         $widget = $this->widgets
-            ->truncate()
             ->create(
                 [
                     'en'        => [
                         'title'       => 'Recent News',
                         'description' => 'Recent news from http://pyrocms.com/'
                     ],
-                    'dashboard' => 1, // Home
-                    'extension' => 'anomaly.extension.xml_feed_widget'
+                    'extension' => 'anomaly.extension.xml_feed_widget',
+                    'dashboard' => $dashboard
                 ]
             );
 
