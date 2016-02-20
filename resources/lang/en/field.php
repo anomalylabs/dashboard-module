@@ -2,20 +2,28 @@
 
 return [
     'name'          => [
-        'name' => 'Name'
+        'name'         => 'Name',
+        'instructions' => 'Specify a short descriptive name for this dashboard.'
     ],
     'title'         => [
-        'name' => 'Title'
+        'name'         => 'Title',
+        'instructions' => 'Specify a short descriptive title for this widget.'
     ],
     'slug'          => [
-        'name' => 'Slug'
+        'name'         => 'Slug',
+        'instructions' => 'The slug is used in the dashboard URL.'
     ],
     'description'   => [
-        'name' => 'Description'
+        'name'         => 'Description',
+        'instructions' => [
+            'dashboards' => 'Briefly describe this dashboard.',
+            'widgets'    => 'Briefly describe this widget.'
+        ]
     ],
     'layout'        => [
-        'name'   => 'Layout',
-        'option' => [
+        'name'         => 'Layout',
+        'instructions' => 'The layout determines how you can organize dashboard widgets.',
+        'option'       => [
             '24'      => 'Single column',
             '12-12'   => 'Two equal columns',
             '16-8'    => 'Two columns - left weighted',
@@ -28,16 +36,26 @@ return [
         ]
     ],
     'dashboard'     => [
-        'name' => 'Dashboard'
+        'name'         => 'Dashboard',
+        'instructions' => 'Choose which dashboard this widget belongs to.'
     ],
     'extension'     => [
         'name' => 'Extension'
     ],
     'pinned'        => [
-        'name'  => 'Pinned',
-        'label' => 'Pin this widget to the top?'
+        'name'         => 'Pinned',
+        'label'        => 'Pin this widget?',
+        'instructions' => 'Pinned widgets are full width and pushed to the top of the dashboard.'
     ],
     'allowed_roles' => [
-        'name' => 'Allowed Roles'
+        'name'         => 'Allowed Roles',
+        'instructions' => [
+            'dashboards' => 'Specify which user roles can access this dashboard.',
+            'widgets'    => 'Specify which user roles can see this widget.'
+        ],
+        'warning'      => [
+            'dashboards' => 'If no roles are specified then everyone with access to this addon can access it.',
+            'widgets'    => 'If no roles are specified then everyone with access to this addon can see it.'
+        ]
     ]
 ];
