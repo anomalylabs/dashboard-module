@@ -54,8 +54,8 @@ return [
             'widgets'    => 'Specify which user roles can see this widget.'
         ],
         'warning'      => [
-            'dashboards' => 'If no roles are specified then everyone with access to this addon can access it.',
-            'widgets'    => 'If no roles are specified then everyone with access to this addon can see it.'
+            'dashboards' => 'If no roles are specified then everyone with access to this addon can access this dashboard.',
+            'widgets'    => 'If no roles are specified then everyone with access to this addon can see this widget.'
         ]
     ]
 ];
