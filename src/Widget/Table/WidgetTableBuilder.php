@@ -59,15 +59,4 @@ class WidgetTableBuilder extends TableBuilder
         'delete'
     ];
 
-    /**
-     * The table options.
-     *
-     * @var array
-     */
-    protected $options = [
-        'order_by' => [
-            'title' => 'ASC'
-        ]
-    ];
-
 }
