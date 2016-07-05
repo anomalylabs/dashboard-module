@@ -5,9 +5,9 @@ use Anomaly\Streams\Platform\Database\Migration\Migration;
 /**
  * Class AnomalyModuleDashboardCreateWidgetsStream
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  */
 class AnomalyModuleDashboardCreateWidgetsStream extends Migration
 {
@@ -20,7 +20,8 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
     protected $stream = [
         'slug'         => 'widgets',
         'title_column' => 'title',
-        'translatable' => true
+        'translatable' => true,
+        'sortable'     => true
     ];
 
     /**
@@ -29,17 +30,20 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'title'     => [
+        'title'       => [
             'required'     => true,
             'translatable' => true
         ],
-        'extension' => [
+        'description' => [
+            'translatable' => true
+        ],
+        'extension'   => [
             'required' => true
         ],
-        'column'    => [
+        'column'      => [
             'required' => true
         ],
-        'dashboard' => [
+        'dashboard'   => [
             'required' => true
         ],
         'allowed_roles',

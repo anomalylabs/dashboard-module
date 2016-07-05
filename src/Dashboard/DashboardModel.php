@@ -3,27 +3,57 @@
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
 use Anomaly\DashboardModule\Widget\WidgetModel;
 use Anomaly\Streams\Platform\Model\Dashboard\DashboardDashboardsEntryModel;
+use Anomaly\Streams\Platform\Model\EloquentCollection;
 use Anomaly\UsersModule\Role\RoleCollection;
 
 /**
  * Class DashboardModel
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\DashboardModule\Dashboard
  */
 class DashboardModel extends DashboardDashboardsEntryModel implements DashboardInterface
 {
 
     /**
-     * Boot the model.
+     * The active flag.
+     *
+     * @var bool
      */
-    protected static function boot()
-    {
-        self::observe(app(substr(__CLASS__, 0, -5) . 'Observer'));
+    protected $active = false;
 
-        parent::boot();
+    /**
+     * Eager loaded relations.
+     *
+     * @var array
+     */
+    protected $with = [
+        'translations'
+    ];
+
+    /**
+     * Get the active flag.
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the active flag.
+     *
+     * @param $active
+     * @return $this
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
     }
 
     /**
@@ -53,7 +83,7 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
      */
     public function getAllowedRoles()
     {
-        return $this->allowedRoles()->get();
+        return $this->allowed_roles;
     }
 
     /**

@@ -5,9 +5,9 @@ use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
 /**
  * Interface WidgetExtensionInterface
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\DashboardModule\Widget\Extension\Contract
  */
 interface WidgetExtensionInterface
@@ -35,6 +35,21 @@ interface WidgetExtensionInterface
      * @return $this
      */
     public function setView($view);
+
+    /**
+     * Get the contextual state.
+     *
+     * @return string
+     */
+    public function getContext();
+
+    /**
+     * Set the contextual state.
+     *
+     * @param $context
+     * @return $this
+     */
+    public function setContext($context);
 
     /**
      * Get the wrapper.

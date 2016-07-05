@@ -5,9 +5,9 @@ use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
 /**
  * Class DashboardTableBuilder
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\DashboardModule\Dashboard\Table
  */
 class DashboardTableBuilder extends TableBuilder
@@ -19,7 +19,13 @@ class DashboardTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $filters = [
-        'name'
+        'search' => [
+            'fields' => [
+                'name',
+                'slug',
+                'description'
+            ]
+        ]
     ];
 
     /**
@@ -28,7 +34,7 @@ class DashboardTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $columns = [
-        'entry.edit_link',
+        'name',
         'description'
     ];
 
@@ -38,6 +44,7 @@ class DashboardTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $buttons = [
+        'edit',
         'view' => [
             'href' => 'admin/dashboard/view/{entry.slug}'
         ]
@@ -50,6 +57,15 @@ class DashboardTableBuilder extends TableBuilder
      */
     protected $actions = [
         'delete'
+    ];
+
+    /**
+     * The table options.
+     *
+     * @var array
+     */
+    protected $options = [
+        'sortable' => true
     ];
 
 }

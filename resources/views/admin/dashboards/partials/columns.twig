@@ -1,7 +1,5 @@
-{% set widgets = dashboard.widgets.allowed() %}
-
 <div class="row">
-    {% for widget in widgets.pinned() %}
+    {% for widget in dashboard.widgets.pinned() %}
         <div class="col-lg-24">
             {{ widget.output()|raw }}
         </div>
@@ -9,11 +7,11 @@
 </div>
 
 
-<div class="row">
+<div class="columns row">
     {% for span in dashboard.layout|split('-') %}
-        <div class="col-lg-{{ span }}">
+        <div class="column col-lg-{{ span }}">
 
-            {% set column = widgets.column(loop.index, loop.last) %}
+            {% set column = dashboard.widgets.column(loop.index, loop.last) %}
 
             {% for widget in column %}
                 {{ widget.output()|raw }}

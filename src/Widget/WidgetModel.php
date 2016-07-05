@@ -1,5 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Widget;
 
+use Anomaly\DashboardModule\Widget\Command\GetSortableFlag;
 use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
 use Anomaly\DashboardModule\Widget\Extension\Contract\WidgetExtensionInterface;
 use Anomaly\Streams\Platform\Model\Dashboard\DashboardWidgetsEntryModel;
@@ -8,9 +9,9 @@ use Anomaly\UsersModule\Role\RoleCollection;
 /**
  * Class WidgetModel
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\DashboardModule\Widget
  */
 class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
@@ -33,16 +34,6 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
         $this->data = new WidgetCollection();
 
         parent::__construct($attributes);
-    }
-
-    /**
-     * Boot the model.
-     */
-    protected static function boot()
-    {
-        self::observe(app(substr(__CLASS__, 0, -5) . 'Observer'));
-
-        parent::boot();
     }
 
     /**
@@ -130,6 +121,28 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
         $this->data->put($key, $data);
 
         return $this;
+    }
+
+    /**
+     * Return the sortable flag.
+     *
+     * @return bool
+     */
+    public function isSortable()
+    {
+        return $this->dispatch(new GetSortableFlag($this));
+    }
+
+    /**
+     * Return the widget's context.
+     *
+     * @return string
+     */
+    public function context()
+    {
+        $extension = $this->getExtension();
+
+        return $extension->getContext();
     }
 
     /**

@@ -13,9 +13,9 @@ use Anomaly\Streams\Platform\Http\Controller\AdminController;
 /**
  * Class WidgetsController
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\DashboardModule\Http\Controller\Admin
  */
 class WidgetsController extends AdminController
@@ -98,5 +98,20 @@ class WidgetsController extends AdminController
         $form->addForm('configuration', $configuration->setScope($id)->setEntry($extension->getNamespace()));
 
         return $form->render();
+    }
+
+    public function save(WidgetRepositoryInterface $widgets)
+    {
+        foreach (json_decode($this->request->get('columns')) as $column => $columns) {
+            foreach ($columns as $position => $widget) {
+                if ($widget = $widgets->find($widget->id)) {
+
+                    $widget->setAttribute('column', $column + 1);
+                    $widget->setAttribute('sort_order', $position + 1);
+
+                    $widgets->save($widget);
+                }
+            }
+        }
     }
 }

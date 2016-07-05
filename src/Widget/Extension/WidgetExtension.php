@@ -9,9 +9,9 @@ use Anomaly\Streams\Platform\Addon\Extension\Extension;
 /**
  * Class WidgetExtension
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\DashboardModule\Widget\Extension
  */
 class WidgetExtension extends Extension implements WidgetExtensionInterface
@@ -23,6 +23,13 @@ class WidgetExtension extends Extension implements WidgetExtensionInterface
      * @var string
      */
     protected $view = null;
+
+    /**
+     * The contextual state.
+     *
+     * @var string
+     */
+    protected $context = 'primary';
 
     /**
      * The widget wrapper.
@@ -107,6 +114,29 @@ class WidgetExtension extends Extension implements WidgetExtensionInterface
     public function setWrapper($wrapper)
     {
         $this->wrapper = $wrapper;
+
+        return $this;
+    }
+
+    /**
+     * Get the contextual state.
+     *
+     * @return string
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
+     * Set the contextual state.
+     *
+     * @param $context
+     * @return $this
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
 
         return $this;
     }

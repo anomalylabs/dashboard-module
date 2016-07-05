@@ -11,9 +11,9 @@ use Illuminate\Contracts\Auth\Guard;
 /**
  * Class DashboardsController
  *
- * @link          http://anomaly.is/streams-platform
- * @author        AnomalyLabs, Inc. <hello@anomaly.is>
- * @author        Ryan Thompson <ryan@anomaly.is>
+ * @link          http://pyrocms.com/
+ * @author        PyroCMS, Inc. <support@pyrocms.com>
+ * @author        Ryan Thompson <ryan@pyrocms.com>
  * @package       Anomaly\DashboardModule\Http\Controller\Admin
  */
 class DashboardsController extends AdminController
@@ -27,8 +27,10 @@ class DashboardsController extends AdminController
      */
     public function index(DashboardRepositoryInterface $dashboards)
     {
+        $dashboards = $dashboards->allowed();
+
         /* @var DashboardInterface $dashboard */
-        if (!$dashboard = $dashboards->allowed()->first()) {
+        if (!$dashboard = $dashboards->first()) {
             return $this->redirect->to('admin/dashboard/manage');
         }
 
@@ -79,17 +81,31 @@ class DashboardsController extends AdminController
      */
     public function view(DashboardRepositoryInterface $dashboards, Guard $guard, $dashboard)
     {
-        if (!$dashboard = $dashboards->findBySlug($dashboard)) {
+        $dashboards = $dashboards->allowed();
+
+        /* @var DashboardInterface $dashboard */
+        if (!$dashboard = $dashboards->find($dashboard)) {
             abort(404);
         }
 
-        /* @var UserInterface $user */
-        $user = $guard->user();
+        $dashboard->setActive(true);
 
-        if (!$user->hasAnyRole($dashboard->getAllowedRoles())) {
+        /* @var UserInterface $user */
+        $user  = $guard->user();
+        $roles = $dashboard->getAllowedRoles();
+
+        if (!$roles->isEmpty() && !$user->hasAnyRole($roles)) {
             abort(403);
         }
 
-        return $this->view->make('module::admin/dashboards/dashboard', compact('dashboard'));
+        $this->template->set('show_banner', true);
+
+        return $this->view->make(
+            'module::admin/dashboards/dashboard',
+            [
+                'dashboard'  => $dashboard,
+                'dashboards' => $dashboards
+            ]
+        );
     }
 }
