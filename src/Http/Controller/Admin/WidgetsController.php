@@ -41,8 +41,8 @@ class WidgetsController extends AdminController
     public function choose(ExtensionCollection $extensions)
     {
         return $this->view->make(
-            'module::ajax/choose_widget',
-            ['extensions' => $extensions->search('anomaly.module.dashboard::widget.*')]
+            'module::admin/widgets/choose',
+            ['widgets' => $extensions->search('anomaly.module.dashboard::widget.*')]
         );
     }
 
@@ -62,7 +62,7 @@ class WidgetsController extends AdminController
         ConfigurationFormBuilder $configuration
     ) {
         /* @var WidgetExtension $extension */
-        $extension = $extensions->get($this->request->get('extension'));
+        $extension = $extensions->get($this->request->get('widget'));
 
         $form->addForm('widget', $widget->setExtension($extension));
         $form->addForm('configuration', $configuration->setEntry($extension->getNamespace()));
