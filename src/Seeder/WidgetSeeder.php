@@ -85,15 +85,5 @@ class WidgetSeeder extends Seeder
                 'value' => 'http://www.pyrocms.com/posts/rss.xml'
             ]
         );
-
-        $this->configuration->create(
-            [
-                'scope' => $widget->getId(),
-                'key'   => 'anomaly.extension.xml_feed_widget::template',
-                'value' => file_get_contents(
-                    $this->container->make(XMLFeedWidgetExtension::class)->getPath('resources/stubs/template.stub')
-                )
-            ]
-        );
     }
 }
