@@ -12,7 +12,6 @@ use Anomaly\XmlFeedWidgetExtension\XmlFeedWidgetExtension;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Seeder
  */
 class WidgetSeeder extends Seeder
 {
@@ -69,10 +68,10 @@ class WidgetSeeder extends Seeder
                 [
                     'en'        => [
                         'title'       => 'Recent News',
-                        'description' => 'Recent news from http://pyrocms.com/'
+                        'description' => 'Recent news from http://pyrocms.com/',
                     ],
                     'extension' => 'anomaly.extension.xml_feed_widget',
-                    'dashboard' => $dashboard
+                    'dashboard' => $dashboard,
                 ]
             );
 
@@ -82,7 +81,7 @@ class WidgetSeeder extends Seeder
             [
                 'scope' => $widget->getId(),
                 'key'   => 'anomaly.extension.xml_feed_widget::url',
-                'value' => 'http://www.pyrocms.com/posts/rss.xml'
+                'value' => 'http://www.pyrocms.com/posts/rss.xml',
             ]
         );
     }

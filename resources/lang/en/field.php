@@ -3,22 +3,22 @@
 return [
     'name'          => [
         'name'         => 'Name',
-        'instructions' => 'Specify a short descriptive name for this dashboard.'
+        'instructions' => 'Specify a short descriptive name for this dashboard.',
     ],
     'title'         => [
         'name'         => 'Title',
-        'instructions' => 'Specify a short descriptive title for this widget.'
+        'instructions' => 'Specify a short descriptive title for this widget.',
     ],
     'slug'          => [
         'name'         => 'Slug',
-        'instructions' => 'The slug is used in the dashboard URL.'
+        'instructions' => 'The slug is used in the dashboard URL.',
     ],
     'description'   => [
         'name'         => 'Description',
         'instructions' => [
             'dashboards' => 'Briefly describe this dashboard.',
-            'widgets'    => 'Briefly describe this widget.'
-        ]
+            'widgets'    => 'Briefly describe this widget.',
+        ],
     ],
     'layout'        => [
         'name'         => 'Layout',
@@ -32,30 +32,30 @@ return [
             '6-12-6'  => 'Three columns - center weighted',
             '12-6-6'  => 'Three columns - left weighted',
             '6-6-12'  => 'Three columns - right weighted',
-            '6-6-6-6' => 'Four equal columns'
-        ]
+            '6-6-6-6' => 'Four equal columns',
+        ],
     ],
     'dashboard'     => [
         'name'         => 'Dashboard',
-        'instructions' => 'Choose which dashboard this widget belongs to.'
+        'instructions' => 'Choose which dashboard this widget belongs to.',
     ],
     'extension'     => [
-        'name' => 'Extension'
+        'name' => 'Extension',
     ],
     'pinned'        => [
         'name'         => 'Pinned',
         'label'        => 'Pin this widget?',
-        'instructions' => 'Pinned widgets are full width and pushed to the top of the dashboard.'
+        'instructions' => 'Pinned widgets are full width and pushed to the top of the dashboard.',
     ],
     'allowed_roles' => [
         'name'         => 'Allowed Roles',
         'instructions' => [
             'dashboards' => 'Specify which user roles can access this dashboard.',
-            'widgets'    => 'Specify which user roles can see this widget.'
+            'widgets'    => 'Specify which user roles can see this widget.',
         ],
         'warning'      => [
             'dashboards' => 'If no roles are specified then everyone with access to this addon can access this dashboard.',
-            'widgets'    => 'If no roles are specified then everyone with access to this addon can see this widget.'
-        ]
-    ]
+            'widgets'    => 'If no roles are specified then everyone with access to this addon can see this widget.',
+        ],
+    ],
 ];

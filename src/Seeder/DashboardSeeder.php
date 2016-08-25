@@ -9,7 +9,6 @@ use Anomaly\Streams\Platform\Database\Seeder\Seeder;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Seeder
  */
 class DashboardSeeder extends Seeder
 {
@@ -42,10 +41,10 @@ class DashboardSeeder extends Seeder
                 [
                     'en'     => [
                         'name'        => 'Welcome',
-                        'description' => 'This is the default dashboard for PyroCMS.'
+                        'description' => 'This is the default dashboard for PyroCMS.',
                     ],
                     'slug'   => 'welcome',
-                    'layout' => '24'
+                    'layout' => '24',
                 ]
             );
     }

@@ -12,7 +12,6 @@ use Anomaly\UsersModule\Role\RoleCollection;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Widget
  */
 class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
 {

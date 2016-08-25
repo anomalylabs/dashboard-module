@@ -4,11 +4,11 @@ return [
     'dashboards' => [
         'read',
         'write',
-        'delete'
+        'delete',
     ],
     'widgets'    => [
         'read',
         'write',
-        'delete'
-    ]
+        'delete',
+    ],
 ];

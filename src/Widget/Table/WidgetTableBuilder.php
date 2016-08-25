@@ -8,7 +8,6 @@ use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Widget\Table
  */
 class WidgetTableBuilder extends TableBuilder
 {
@@ -22,11 +21,11 @@ class WidgetTableBuilder extends TableBuilder
         'search' => [
             'fields' => [
                 'title',
-                'description'
-            ]
+                'description',
+            ],
         ],
         'dashboard',
-        'extension'
+        'extension',
     ];
 
     /**
@@ -38,7 +37,7 @@ class WidgetTableBuilder extends TableBuilder
         'title',
         'description',
         'dashboard',
-        'entry.extension.title'
+        'entry.extension.title',
     ];
 
     /**
@@ -47,7 +46,7 @@ class WidgetTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $buttons = [
-        'edit'
+        'edit',
     ];
 
     /**
@@ -56,7 +55,7 @@ class WidgetTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $actions = [
-        'delete'
+        'delete',
     ];
 
 }

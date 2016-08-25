@@ -8,7 +8,6 @@ use Anomaly\Streams\Platform\Entry\EntryPresenter;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Dashboard
  */
 class DashboardPresenter extends EntryPresenter
 {
@@ -29,7 +28,7 @@ class DashboardPresenter extends EntryPresenter
                             'admin',
                             $this->object->getStreamNamespace(),
                             'edit',
-                            $this->object->getId()
+                            $this->object->getId(),
                         ]
                     )
                 )

@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Dashboard
  */
 class DashboardCollection extends EntryCollection
 {
@@ -41,8 +40,8 @@ class DashboardCollection extends EntryCollection
     /**
      * Find a model in the collection by key.
      *
-     * @param  mixed $key
-     * @param  mixed $default
+     * @param  mixed                               $key
+     * @param  mixed                               $default
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function find($key, $default = null)

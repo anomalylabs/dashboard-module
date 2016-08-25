@@ -6,6 +6,6 @@ return [
     'description' => 'A system dashboard and report manager.',
     'section'     => [
         'dashboards' => 'Dashboards',
-        'widgets'    => 'Widgets'
-    ]
+        'widgets'    => 'Widgets',
+    ],
 ];

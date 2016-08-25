@@ -12,7 +12,6 @@ use Anomaly\UsersModule\Role\RoleCollection;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Dashboard
  */
 class DashboardModel extends DashboardDashboardsEntryModel implements DashboardInterface
 {
@@ -30,7 +29,7 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
      * @var array
      */
     protected $with = [
-        'translations'
+        'translations',
     ];
 
     /**

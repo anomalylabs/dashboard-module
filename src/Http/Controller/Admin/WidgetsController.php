@@ -16,7 +16,6 @@ use Anomaly\Streams\Platform\Http\Controller\AdminController;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Http\Controller\Admin
  */
 class WidgetsController extends AdminController
 {
@@ -24,7 +23,7 @@ class WidgetsController extends AdminController
     /**
      * Display an index of existing entries.
      *
-     * @param WidgetTableBuilder $table
+     * @param  WidgetTableBuilder                         $table
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(WidgetTableBuilder $table)
@@ -35,7 +34,7 @@ class WidgetsController extends AdminController
     /**
      * Return the modal for choosing a widget.
      *
-     * @param ExtensionCollection $extensions
+     * @param  ExtensionCollection                   $extensions
      * @return \Illuminate\Contracts\View\View|mixed
      */
     public function choose(ExtensionCollection $extensions)
@@ -49,10 +48,10 @@ class WidgetsController extends AdminController
     /**
      * Create a new entry.
      *
-     * @param ExtensionCollection                          $extensions
-     * @param WidgetExtensionFormBuilder|WidgetFormBuilder $form
-     * @param WidgetFormBuilder                            $widget
-     * @param ConfigurationFormBuilder                     $configuration
+     * @param  ExtensionCollection                          $extensions
+     * @param  WidgetExtensionFormBuilder|WidgetFormBuilder $form
+     * @param  WidgetFormBuilder                            $widget
+     * @param  ConfigurationFormBuilder                     $configuration
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function create(
@@ -73,10 +72,10 @@ class WidgetsController extends AdminController
     /**
      * Edit an existing entry.
      *
-     * @param ExtensionCollection                          $extensions
-     * @param WidgetExtensionFormBuilder|WidgetFormBuilder $form
-     * @param WidgetFormBuilder                            $widget
-     * @param ConfigurationFormBuilder                     $configuration
+     * @param  ExtensionCollection                          $extensions
+     * @param  WidgetExtensionFormBuilder|WidgetFormBuilder $form
+     * @param  WidgetFormBuilder                            $widget
+     * @param  ConfigurationFormBuilder                     $configuration
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function edit(

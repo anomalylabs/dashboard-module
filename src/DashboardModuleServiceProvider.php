@@ -9,7 +9,6 @@ use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule
  */
 class DashboardModuleServiceProvider extends AddonServiceProvider
 {
@@ -29,7 +28,7 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
         'admin/dashboard/widgets/create'    => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@create',
         'admin/dashboard/widgets/edit/{id}' => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@edit',
         'admin/dashboard/widgets/choose'    => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@choose',
-        'admin/dashboard/widgets/save'      => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@save'
+        'admin/dashboard/widgets/save'      => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@save',
     ];
 
     /**
@@ -39,6 +38,6 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
      */
     protected $singletons = [
         'Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface'       => 'Anomaly\DashboardModule\Widget\WidgetRepository',
-        'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface' => 'Anomaly\DashboardModule\Dashboard\DashboardRepository'
+        'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface' => 'Anomaly\DashboardModule\Dashboard\DashboardRepository',
     ];
 }

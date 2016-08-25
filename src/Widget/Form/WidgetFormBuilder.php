@@ -10,7 +10,6 @@ use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Widget\Form
  */
 class WidgetFormBuilder extends FormBuilder
 {
@@ -36,7 +35,7 @@ class WidgetFormBuilder extends FormBuilder
      */
     protected $skips = [
         'extension',
-        'column'
+        'column',
     ];
 
     /**
@@ -77,7 +76,7 @@ class WidgetFormBuilder extends FormBuilder
     /**
      * Set the extension.
      *
-     * @param WidgetExtension $extension
+     * @param  WidgetExtension $extension
      * @return $this
      */
     public function setExtension(WidgetExtension $extension)
@@ -100,7 +99,7 @@ class WidgetFormBuilder extends FormBuilder
     /**
      * Set the dashboard.
      *
-     * @param DashboardInterface $dashboard
+     * @param  DashboardInterface $dashboard
      * @return $this
      */
     public function setDashboard(DashboardInterface $dashboard)

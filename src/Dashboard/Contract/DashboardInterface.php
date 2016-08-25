@@ -9,7 +9,6 @@ use Anomaly\UsersModule\Role\RoleCollection;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Dashboard\Contract
  */
 interface DashboardInterface extends EntryInterface
 {

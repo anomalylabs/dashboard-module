@@ -21,7 +21,7 @@ class AnomalyModuleDashboardCreateDashboardsStream extends Migration
         'slug'         => 'dashboards',
         'title_column' => 'name',
         'translatable' => true,
-        'sortable'     => true
+        'sortable'     => true,
     ];
 
     /**
@@ -32,19 +32,19 @@ class AnomalyModuleDashboardCreateDashboardsStream extends Migration
     protected $assignments = [
         'name'        => [
             'required'     => true,
-            'translatable' => true
+            'translatable' => true,
         ],
         'slug'        => [
             'required' => true,
-            'unique'   => true
+            'unique'   => true,
         ],
         'description' => [
-            'translatable' => true
+            'translatable' => true,
         ],
         'layout'      => [
-            'required' => true
+            'required' => true,
         ],
-        'allowed_roles'
+        'allowed_roles',
     ];
 
 }

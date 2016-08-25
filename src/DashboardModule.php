@@ -8,7 +8,6 @@ use Anomaly\Streams\Platform\Addon\Module\Module;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule
  */
 class DashboardModule extends Module
 {
@@ -29,32 +28,32 @@ class DashboardModule extends Module
         'dashboards' => [
             'buttons' => [
                 'new_dashboard' => [
-                    'enabled' => 'admin/dashboard/manage'
+                    'enabled' => 'admin/dashboard/manage',
                 ],
                 'manage'        => [
                     'type'       => 'info',
                     'icon'       => 'wrench',
                     'enabled'    => 'admin/dashboard/view/*',
-                    'permission' => 'anomaly.module.dashboard::dashboards.write'
+                    'permission' => 'anomaly.module.dashboard::dashboards.write',
                 ],
                 'new_widget'    => [
                     'data-toggle' => 'modal',
                     'data-target' => '#modal',
                     'enabled'     => 'admin/dashboard/view/*',
                     'href'        => 'admin/dashboard/widgets/choose',
-                    'permission'  => 'anomaly.module.dashboard::widgets.write'
+                    'permission'  => 'anomaly.module.dashboard::widgets.write',
                 ],
-            ]
+            ],
         ],
         'widgets'    => [
             'buttons' => [
                 'new_widget' => [
                     'data-toggle' => 'modal',
                     'data-target' => '#modal',
-                    'href'        => 'admin/dashboard/widgets/choose'
-                ]
-            ]
-        ]
+                    'href'        => 'admin/dashboard/widgets/choose',
+                ],
+            ],
+        ],
     ];
 
 }

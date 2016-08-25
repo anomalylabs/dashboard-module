@@ -1,7 +1,6 @@
 <?php namespace Anomaly\DashboardModule\Widget\Extension\Command;
 
 use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
-use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\View\Factory;
 
 /**
@@ -10,9 +9,8 @@ use Illuminate\Contracts\View\Factory;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Widget\Extension\Command
  */
-class GetOutput implements SelfHandling
+class GetOutput
 {
 
     /**
@@ -35,7 +33,7 @@ class GetOutput implements SelfHandling
     /**
      * Handle the output.
      *
-     * @param Factory $view
+     * @param  Factory                         $view
      * @return \Illuminate\Contracts\View\View
      */
     public function handle(Factory $view)

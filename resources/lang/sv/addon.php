@@ -5,6 +5,6 @@ return [
     'name'        => 'Instrumentbrädemodul',
     'description' => 'En instrumentbräda för systemet och rapporthanterare.',
     'section'     => [
-        'dashboard' => 'Instrumentbräda'
-    ]
+        'dashboard' => 'Instrumentbräda',
+    ],
 ];

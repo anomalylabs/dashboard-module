@@ -8,7 +8,6 @@ use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Dashboard\Form
  */
 class DashboardFormBuilder extends FormBuilder
 {
@@ -19,7 +18,7 @@ class DashboardFormBuilder extends FormBuilder
      * @var array
      */
     protected $options = [
-        'redirect' => 'admin/dashboard/manage'
+        'redirect' => 'admin/dashboard/manage',
     ];
 
 }

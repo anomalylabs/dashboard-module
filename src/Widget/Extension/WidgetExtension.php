@@ -12,7 +12,6 @@ use Anomaly\Streams\Platform\Addon\Extension\Extension;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Widget\Extension
  */
 class WidgetExtension extends Extension implements WidgetExtensionInterface
 {
@@ -41,7 +40,7 @@ class WidgetExtension extends Extension implements WidgetExtensionInterface
     /**
      * Return the widget output.
      *
-     * @param WidgetInterface $widget
+     * @param  WidgetInterface                 $widget
      * @return \Illuminate\Contracts\View\View
      */
     public function output(WidgetInterface $widget)

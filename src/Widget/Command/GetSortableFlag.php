@@ -2,7 +2,7 @@
 
 use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
 use Anomaly\Streams\Platform\Support\Authorizer;
-use Illuminate\Contracts\Bus\SelfHandling;
+
 
 /**
  * Class GetSortableFlag
@@ -10,9 +10,8 @@ use Illuminate\Contracts\Bus\SelfHandling;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Widget\Command
  */
-class GetSortableFlag implements SelfHandling
+class GetSortableFlag
 {
 
     /**
@@ -35,7 +34,7 @@ class GetSortableFlag implements SelfHandling
     /**
      * Handle the command.
      *
-     * @param Authorizer $authorizer
+     * @param  Authorizer $authorizer
      * @return bool
      */
     public function handle(Authorizer $authorizer)

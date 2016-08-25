@@ -8,7 +8,6 @@ use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Dashboard\Table
  */
 class DashboardTableBuilder extends TableBuilder
 {
@@ -23,9 +22,9 @@ class DashboardTableBuilder extends TableBuilder
             'fields' => [
                 'name',
                 'slug',
-                'description'
-            ]
-        ]
+                'description',
+            ],
+        ],
     ];
 
     /**
@@ -35,7 +34,7 @@ class DashboardTableBuilder extends TableBuilder
      */
     protected $columns = [
         'name',
-        'description'
+        'description',
     ];
 
     /**
@@ -46,8 +45,8 @@ class DashboardTableBuilder extends TableBuilder
     protected $buttons = [
         'edit',
         'view' => [
-            'href' => 'admin/dashboard/view/{entry.slug}'
-        ]
+            'href' => 'admin/dashboard/view/{entry.slug}',
+        ],
     ];
 
     /**
@@ -56,7 +55,7 @@ class DashboardTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $actions = [
-        'delete'
+        'delete',
     ];
 
     /**
@@ -65,7 +64,7 @@ class DashboardTableBuilder extends TableBuilder
      * @var array
      */
     protected $options = [
-        'sortable' => true
+        'sortable' => true,
     ];
 
 }

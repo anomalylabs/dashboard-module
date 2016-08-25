@@ -14,7 +14,6 @@ use Illuminate\Contracts\Auth\Guard;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Http\Controller\Admin
  */
 class DashboardsController extends AdminController
 {
@@ -22,7 +21,7 @@ class DashboardsController extends AdminController
     /**
      * Display a management index of existing entries.
      *
-     * @param DashboardRepositoryInterface $dashboards
+     * @param  DashboardRepositoryInterface          $dashboards
      * @return \Illuminate\Contracts\View\View|mixed
      */
     public function index(DashboardRepositoryInterface $dashboards)
@@ -40,7 +39,7 @@ class DashboardsController extends AdminController
     /**
      * Display a management index of existing entries.
      *
-     * @param DashboardTableBuilder $table
+     * @param  DashboardTableBuilder                      $table
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function manage(DashboardTableBuilder $table)
@@ -51,7 +50,7 @@ class DashboardsController extends AdminController
     /**
      * Create a new entry.
      *
-     * @param DashboardFormBuilder $form
+     * @param  DashboardFormBuilder                       $form
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function create(DashboardFormBuilder $form)
@@ -62,8 +61,8 @@ class DashboardsController extends AdminController
     /**
      * Edit an existing entry.
      *
-     * @param DashboardFormBuilder $form
-     * @param                      $id
+     * @param  DashboardFormBuilder                       $form
+     * @param                                             $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function edit(DashboardFormBuilder $form, $id)
@@ -74,9 +73,9 @@ class DashboardsController extends AdminController
     /**
      * View a dashboard.
      *
-     * @param DashboardRepositoryInterface $dashboards
-     * @param Guard                        $guard
-     * @param                              $dashboard
+     * @param  DashboardRepositoryInterface          $dashboards
+     * @param  Guard                                 $guard
+     * @param                                        $dashboard
      * @return \Illuminate\Contracts\View\View|mixed
      */
     public function view(DashboardRepositoryInterface $dashboards, Guard $guard, $dashboard)
@@ -104,7 +103,7 @@ class DashboardsController extends AdminController
             'module::admin/dashboards/dashboard',
             [
                 'dashboard'  => $dashboard,
-                'dashboards' => $dashboards
+                'dashboards' => $dashboards,
             ]
         );
     }

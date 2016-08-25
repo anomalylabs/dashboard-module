@@ -24,8 +24,8 @@ class AnomalyModuleDashboardCreateDashboardFields extends Migration
         'slug'          => [
             'type'   => 'anomaly.field_type.slug',
             'config' => [
-                'slugify' => 'name'
-            ]
+                'slugify' => 'name',
+            ],
         ],
         'description'   => 'anomaly.field_type.textarea',
         'layout'        => [
@@ -40,38 +40,38 @@ class AnomalyModuleDashboardCreateDashboardFields extends Migration
                     '6-12-6'  => 'anomaly.module.dashboard::field.layout.option.6-12-6',
                     '12-6-6'  => 'anomaly.module.dashboard::field.layout.option.12-6-6',
                     '6-6-12'  => 'anomaly.module.dashboard::field.layout.option.6-6-12',
-                    '6-6-6-6' => 'anomaly.module.dashboard::field.layout.option.6-6-6-6'
-                ]
-            ]
+                    '6-6-6-6' => 'anomaly.module.dashboard::field.layout.option.6-6-6-6',
+                ],
+            ],
         ],
         'title'         => 'anomaly.field_type.text',
         'extension'     => [
             'type'   => 'anomaly.field_type.addon',
             'config' => [
                 'type'   => 'extension',
-                'search' => 'anomaly.module.dashboard::widget.*'
-            ]
+                'search' => 'anomaly.module.dashboard::widget.*',
+            ],
         ],
         'column'        => [
             'type'   => 'anomaly.field_type.integer',
             'config' => [
                 'min'           => 1,
-                'default_value' => 1
-            ]
+                'default_value' => 1,
+            ],
         ],
         'pinned'        => 'anomaly.field_type.boolean',
         'dashboard'     => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
-                'related' => DashboardModel::class
-            ]
+                'related' => DashboardModel::class,
+            ],
         ],
         'allowed_roles' => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
-                'related' => RoleModel::class
-            ]
-        ]
+                'related' => RoleModel::class,
+            ],
+        ],
     ];
 
 }

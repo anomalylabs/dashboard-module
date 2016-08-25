@@ -8,7 +8,6 @@ use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule\Widget\Extension\Contract
  */
 interface WidgetExtensionInterface
 {
@@ -16,7 +15,7 @@ interface WidgetExtensionInterface
     /**
      * Return the widget output.
      *
-     * @param WidgetInterface $widget
+     * @param  WidgetInterface                 $widget
      * @return \Illuminate\Contracts\View\View
      */
     public function output(WidgetInterface $widget);

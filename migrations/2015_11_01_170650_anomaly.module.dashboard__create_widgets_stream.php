@@ -21,7 +21,7 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
         'slug'         => 'widgets',
         'title_column' => 'title',
         'translatable' => true,
-        'sortable'     => true
+        'sortable'     => true,
     ];
 
     /**
@@ -32,22 +32,22 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
     protected $assignments = [
         'title'       => [
             'required'     => true,
-            'translatable' => true
+            'translatable' => true,
         ],
         'description' => [
-            'translatable' => true
+            'translatable' => true,
         ],
         'extension'   => [
-            'required' => true
+            'required' => true,
         ],
         'column'      => [
-            'required' => true
+            'required' => true,
         ],
         'dashboard'   => [
-            'required' => true
+            'required' => true,
         ],
         'allowed_roles',
-        'pinned'
+        'pinned',
     ];
 
 }

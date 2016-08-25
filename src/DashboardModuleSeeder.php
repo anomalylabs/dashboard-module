@@ -10,7 +10,6 @@ use Anomaly\Streams\Platform\Database\Seeder\Seeder;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\DashboardModule
  */
 class DashboardModuleSeeder extends Seeder
 {
