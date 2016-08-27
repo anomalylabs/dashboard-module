@@ -29,7 +29,6 @@ class DashboardCollection extends EntryCollection
 
         return $this->filter(
             function (DashboardInterface $dashboard) use ($user) {
-
                 $roles = $dashboard->getAllowedRoles();
 
                 return $roles->isEmpty() ?: $user->hasAnyRole($roles);
@@ -51,7 +50,7 @@ class DashboardCollection extends EntryCollection
         }
 
         return $this->first(
-            function ($index, DashboardInterface $model) use ($key) {
+            function (DashboardInterface $model) use ($key) {
                 return $model->getId() == $key || $model->getSlug() == $key;
             },
             $default
