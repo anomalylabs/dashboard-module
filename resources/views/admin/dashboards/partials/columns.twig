@@ -8,7 +8,7 @@
 
 
 <div class="columns row">
-    {% for span in dashboard.layout|split('-') %}
+    {% for span in dashboard.layout.key()|split('-') %}
         <div class="column col-lg-{{ span }}">
 
             {% set column = dashboard.widgets.column(loop.index, loop.last) %}
