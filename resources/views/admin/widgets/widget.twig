@@ -1,8 +1,20 @@
 <div class="widget card" data-id="{{ widget.id }}">
 
-    <span class="{{ widget.sortable ? 'handle' }} card-label card-label-{{ widget.context }}">
-        {{ widget.title }}
-    </span>
+    <div class="{{ widget.sortable ? 'handle' }} card-header">
+        <h5 class="card-title">
+
+            {{ widget.title }}
+
+            {% if widget.description %}
+
+                <br>
+
+                <small>
+                    {{ widget.description }}
+                </small>
+            {% endif %}
+        </h5>
+    </div>
 
     <div class="card-block">
         {{ widget.content|raw }}
