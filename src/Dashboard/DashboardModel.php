@@ -3,7 +3,6 @@
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
 use Anomaly\DashboardModule\Widget\WidgetModel;
 use Anomaly\Streams\Platform\Model\Dashboard\DashboardDashboardsEntryModel;
-use Anomaly\Streams\Platform\Model\EloquentCollection;
 use Anomaly\UsersModule\Role\RoleCollection;
 
 /**
@@ -30,6 +29,15 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
      */
     protected $with = [
         'translations',
+    ];
+
+    /**
+     * The cascading relations.
+     *
+     * @var array
+     */
+    protected $cascades = [
+        'widgets',
     ];
 
     /**

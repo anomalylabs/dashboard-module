@@ -21,6 +21,7 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
         'slug'         => 'widgets',
         'title_column' => 'title',
         'translatable' => true,
+        'trashable'    => true,
         'sortable'     => true,
     ];
 

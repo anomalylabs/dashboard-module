@@ -1,7 +1,15 @@
 <?php namespace Anomaly\DashboardModule;
 
 use Anomaly\DashboardModule\Command\PublishAssets;
+use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
+use Anomaly\DashboardModule\Dashboard\DashboardModel;
+use Anomaly\DashboardModule\Dashboard\DashboardRepository;
+use Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface;
+use Anomaly\DashboardModule\Widget\WidgetModel;
+use Anomaly\DashboardModule\Widget\WidgetRepository;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Model\Dashboard\DashboardDashboardsEntryModel;
+use Anomaly\Streams\Platform\Model\Dashboard\DashboardWidgetsEntryModel;
 
 /**
  * Class DashboardModuleServiceProvider
@@ -12,6 +20,26 @@ use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
  */
 class DashboardModuleServiceProvider extends AddonServiceProvider
 {
+
+    /**
+     * The addon bindings.
+     *
+     * @var array
+     */
+    protected $bindings = [
+        DashboardWidgetsEntryModel::class    => WidgetModel::class,
+        DashboardDashboardsEntryModel::class => DashboardModel::class,
+    ];
+
+    /**
+     * The singleton bindings.
+     *
+     * @var array
+     */
+    protected $singletons = [
+        WidgetRepositoryInterface::class    => WidgetRepository::class,
+        DashboardRepositoryInterface::class => DashboardRepository::class,
+    ];
 
     /**
      * The addon routes.
@@ -29,15 +57,5 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
         'admin/dashboard/widgets/edit/{id}' => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@edit',
         'admin/dashboard/widgets/choose'    => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@choose',
         'admin/dashboard/widgets/save'      => 'Anomaly\DashboardModule\Http\Controller\Admin\WidgetsController@save',
-    ];
-
-    /**
-     * The singleton bindings.
-     *
-     * @var array
-     */
-    protected $singletons = [
-        'Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface'       => 'Anomaly\DashboardModule\Widget\WidgetRepository',
-        'Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface' => 'Anomaly\DashboardModule\Dashboard\DashboardRepository',
     ];
 }

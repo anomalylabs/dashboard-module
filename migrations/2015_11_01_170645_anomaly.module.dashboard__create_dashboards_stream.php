@@ -21,6 +21,7 @@ class AnomalyModuleDashboardCreateDashboardsStream extends Migration
         'slug'         => 'dashboards',
         'title_column' => 'name',
         'translatable' => true,
+        'trashable'    => true,
         'sortable'     => true,
     ];
 
