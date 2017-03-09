@@ -1,10 +1,9 @@
-<?php namespace Anomaly\DashboardModule\Seeder;
+<?php namespace Anomaly\DashboardModule\Widget\Seeder;
 
 use Anomaly\ConfigurationModule\Configuration\Contract\ConfigurationRepositoryInterface;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
 use Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
-use Anomaly\XmlFeedWidgetExtension\XmlFeedWidgetExtension;
 
 /**
  * Class WidgetSeeder

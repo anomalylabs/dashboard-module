@@ -1,4 +1,4 @@
-<?php namespace Anomaly\DashboardModule\Seeder;
+<?php namespace Anomaly\DashboardModule\Dashboard\Seeder;
 
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;

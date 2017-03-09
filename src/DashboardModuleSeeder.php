@@ -1,7 +1,7 @@
 <?php namespace Anomaly\DashboardModule;
 
-use Anomaly\DashboardModule\Seeder\DashboardSeeder;
-use Anomaly\DashboardModule\Seeder\WidgetSeeder;
+use Anomaly\DashboardModule\Dashboard\Seeder\DashboardSeeder;
+use Anomaly\DashboardModule\Widget\Seeder\WidgetSeeder;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
 /**
