@@ -17,6 +17,12 @@
             "role": "Owner"
         }
     ],
+    "require": {
+        "anomaly/streams-platform": "~1.1",
+        "anomaly/users-module": "~2.1",
+        "anomaly/configuration-module": "~2.1",
+        "anomaly/xml_feed_widget-extension": "~2.1"
+    },
     "support": {
         "email": "support@pyrocms.com"
     },
