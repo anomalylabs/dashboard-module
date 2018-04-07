@@ -23,7 +23,7 @@ class WidgetsController extends AdminController
     /**
      * Display an index of existing entries.
      *
-     * @param  WidgetTableBuilder                         $table
+     * @param  WidgetTableBuilder $table
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(WidgetTableBuilder $table)
@@ -34,14 +34,18 @@ class WidgetsController extends AdminController
     /**
      * Return the modal for choosing a widget.
      *
-     * @param  ExtensionCollection                   $extensions
+     * @param  ExtensionCollection $extensions
      * @return \Illuminate\Contracts\View\View|mixed
      */
     public function choose(ExtensionCollection $extensions)
     {
         return $this->view->make(
             'module::admin/widgets/choose',
-            ['widgets' => $extensions->search('anomaly.module.dashboard::widget.*')]
+            [
+                'widgets' => $extensions
+                    ->search('anomaly.module.dashboard::widget.*')
+                    ->enabled(),
+            ]
         );
     }
 
@@ -72,14 +76,12 @@ class WidgetsController extends AdminController
     /**
      * Edit an existing entry.
      *
-     * @param  ExtensionCollection                          $extensions
      * @param  WidgetExtensionFormBuilder|WidgetFormBuilder $form
      * @param  WidgetFormBuilder                            $widget
      * @param  ConfigurationFormBuilder                     $configuration
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function edit(
-        ExtensionCollection $extensions,
         WidgetExtensionFormBuilder $form,
         WidgetFormBuilder $widget,
         ConfigurationFormBuilder $configuration,
@@ -99,11 +101,16 @@ class WidgetsController extends AdminController
         return $form->render();
     }
 
+    /**
+     * Save the dashboard items order.
+     *
+     * @param WidgetRepositoryInterface $widgets
+     */
     public function save(WidgetRepositoryInterface $widgets)
     {
         foreach (json_decode($this->request->get('columns')) as $column => $columns) {
             foreach ($columns as $position => $widget) {
-                if ($widget = $widgets->find($widget->id)) {
+                if ($widget = $widgets->find($widget)) {
 
                     $widget->setAttribute('column', $column + 1);
                     $widget->setAttribute('sort_order', $position + 1);

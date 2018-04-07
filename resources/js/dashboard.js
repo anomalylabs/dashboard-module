@@ -1,25 +1,45 @@
-$(function () {
+(function (window, document) {
 
-    $('#dashboard').find('.column').sortable({
-        placeholder: '<div class="placeholder"></div>',
-        containerSelector: '.column',
-        itemSelector: '.widget',
-        connectWith: '.column',
-        group: 'columns',
-        handle: '.handle',
-        nested: false,
-        afterMove: function ($placeholder) {
-            $placeholder.height($placeholder.closest('.column').find('.dragged').height());
-        },
-        onDrop: function ($item, container, _super) {
+    let dashboard = document.getElementById('dashboard');
 
-            var data = $('#dashboard').find('.column').sortable("serialize").get();
+    let columns = Array.prototype.slice.call(
+        dashboard.querySelectorAll('.column')
+    );
 
-            $.post(APPLICATION_URL + '/admin/dashboard/widgets/save', {
-                'columns': JSON.stringify(data, null, ' ')
-            });
+    /**
+     * Callback function to update the
+     * columns / IDs position on sort.
+     * @param columns
+     */
+    const update = function (columns) {
 
-            _super($item, container);
-        }
+        let request = new XMLHttpRequest();
+
+        request.open('POST', APPLICATION_URL + '/admin/dashboard/widgets/save', true);
+        request.setRequestHeader('Content-Type', 'application/json');
+
+        request.send(JSON.stringify({
+            _token: CSRF_TOKEN,
+            columns: JSON.stringify(
+                columns.map(column => column.sortable.toArray())
+            ),
+        }));
+    };
+
+    /**
+     * Initialize each column
+     * as it's own sortable group.
+     */
+    columns.forEach(function (column) {
+
+        column.sortable = Sortable.create(column, {
+            handle: '.handle',
+            group: 'dashboard',
+            draggable: '.widget',
+            onEnd: function () {
+                update(columns);
+            },
+        });
     });
-});
+
+})(window, document);
