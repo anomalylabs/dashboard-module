@@ -101,7 +101,7 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
      */
     public function getWidgets()
     {
-        return $this->widgets;
+        return $this->widgets->allowed();
     }
 
     /**
