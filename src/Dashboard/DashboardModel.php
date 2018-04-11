@@ -1,6 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Dashboard;
 
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardInterface;
+use Anomaly\DashboardModule\Widget\WidgetCollection;
 use Anomaly\DashboardModule\Widget\WidgetModel;
 use Anomaly\Streams\Platform\Model\Dashboard\DashboardDashboardsEntryModel;
 use Anomaly\UsersModule\Role\RoleCollection;
@@ -96,7 +97,7 @@ class DashboardModel extends DashboardDashboardsEntryModel implements DashboardI
     /**
      * Get the related widgets.
      *
-     * @return \Anomaly\Streams\Platform\Entry\EntryPresenter|mixed
+     * @return WidgetCollection
      */
     public function getWidgets()
     {

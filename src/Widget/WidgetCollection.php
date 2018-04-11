@@ -30,6 +30,12 @@ class WidgetCollection extends EntryCollection
             function ($widget) use ($user) {
 
                 /* @var WidgetInterface $widget */
+                $roles = $widget->getAllowedRoles();
+
+                if ($roles->isEmpty()) {
+                    return true;
+                }
+
                 return $user->hasAnyRole($widget->getAllowedRoles());
             }
         );
