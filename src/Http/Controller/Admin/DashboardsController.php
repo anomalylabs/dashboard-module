@@ -5,7 +5,6 @@ use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
 use Anomaly\DashboardModule\Dashboard\Form\DashboardFormBuilder;
 use Anomaly\DashboardModule\Dashboard\Table\DashboardTableBuilder;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
-use Anomaly\UsersModule\User\Contract\UserInterface;
 
 /**
  * Class DashboardsController
@@ -72,12 +71,11 @@ class DashboardsController extends AdminController
     /**
      * View a dashboard.
      *
-     * @param  DashboardRepositoryInterface $dashboards
-     * @param  Guard $guard
-     * @param                                        $dashboard
-     * @return \Illuminate\Contracts\View\View|mixed
+     * @param DashboardRepositoryInterface $dashboards
+     * @param $dashboard
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view(DashboardRepositoryInterface $dashboards, Guard $guard, $dashboard)
+    public function view(DashboardRepositoryInterface $dashboards, $dashboard)
     {
         $dashboards = $dashboards->allowed();
 
@@ -88,8 +86,7 @@ class DashboardsController extends AdminController
 
         $dashboard->setActive(true);
 
-        /* @var UserInterface $user */
-        $user  = $guard->user();
+        $user  = user();
         $roles = $dashboard->getAllowedRoles();
 
         if (!$roles->isEmpty() && !$user->hasAnyRole($roles)) {
