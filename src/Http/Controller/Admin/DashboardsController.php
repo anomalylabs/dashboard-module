@@ -11,9 +11,9 @@ use Illuminate\Contracts\Auth\Guard;
 /**
  * Class DashboardsController
  *
- * @link          http://pyrocms.com/
- * @author        PyroCMS, Inc. <support@pyrocms.com>
- * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
  */
 class DashboardsController extends AdminController
 {
@@ -21,7 +21,7 @@ class DashboardsController extends AdminController
     /**
      * Display a management index of existing entries.
      *
-     * @param  DashboardRepositoryInterface          $dashboards
+     * @param  DashboardRepositoryInterface $dashboards
      * @return \Illuminate\Contracts\View\View|mixed
      */
     public function index(DashboardRepositoryInterface $dashboards)
@@ -30,16 +30,16 @@ class DashboardsController extends AdminController
 
         /* @var DashboardInterface $dashboard */
         if (!$dashboard = $dashboards->first()) {
-            return $this->redirect->to('admin/dashboard/manage');
+            return redirect('admin/dashboard/manage');
         }
 
-        return $this->redirect->to('admin/dashboard/view/' . $dashboard->getSlug());
+        return redirect('admin/dashboard/view/' . $dashboard->getSlug());
     }
 
     /**
      * Display a management index of existing entries.
      *
-     * @param  DashboardTableBuilder                      $table
+     * @param  DashboardTableBuilder $table
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function manage(DashboardTableBuilder $table)
@@ -50,7 +50,7 @@ class DashboardsController extends AdminController
     /**
      * Create a new entry.
      *
-     * @param  DashboardFormBuilder                       $form
+     * @param  DashboardFormBuilder $form
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function create(DashboardFormBuilder $form)
@@ -61,7 +61,7 @@ class DashboardsController extends AdminController
     /**
      * Edit an existing entry.
      *
-     * @param  DashboardFormBuilder                       $form
+     * @param  DashboardFormBuilder $form
      * @param                                             $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -73,8 +73,8 @@ class DashboardsController extends AdminController
     /**
      * View a dashboard.
      *
-     * @param  DashboardRepositoryInterface          $dashboards
-     * @param  Guard                                 $guard
+     * @param  DashboardRepositoryInterface $dashboards
+     * @param  Guard $guard
      * @param                                        $dashboard
      * @return \Illuminate\Contracts\View\View|mixed
      */
