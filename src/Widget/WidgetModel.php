@@ -56,16 +56,6 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
     }
 
     /**
-     * Get the extension.
-     *
-     * @return WidgetExtensionInterface
-     */
-    public function getExtension()
-    {
-        return $this->extension;
-    }
-
-    /**
      * Get the allowed roles.
      *
      * @return RoleCollection
@@ -129,7 +119,7 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
      */
     public function isSortable()
     {
-        return $this->dispatch(new GetSortableFlag($this));
+        return dispatch_now(new GetSortableFlag($this));
     }
 
     /**
@@ -142,6 +132,16 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
         $extension = $this->getExtension();
 
         return $extension->getContext();
+    }
+
+    /**
+     * Get the extension.
+     *
+     * @return WidgetExtensionInterface
+     */
+    public function getExtension()
+    {
+        return $this->extension;
     }
 
     /**

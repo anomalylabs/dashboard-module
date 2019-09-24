@@ -47,5 +47,4 @@ class AnomalyModuleDashboardCreateDashboardsStream extends Migration
         ],
         'allowed_roles',
     ];
-
 }

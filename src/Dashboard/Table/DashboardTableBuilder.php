@@ -66,5 +66,4 @@ class DashboardTableBuilder extends TableBuilder
     protected $options = [
         'sortable' => true,
     ];
-
 }

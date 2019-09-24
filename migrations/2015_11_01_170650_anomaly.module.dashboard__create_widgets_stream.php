@@ -50,5 +50,4 @@ class AnomalyModuleDashboardCreateWidgetsStream extends Migration
         'allowed_roles',
         'pinned',
     ];
-
 }

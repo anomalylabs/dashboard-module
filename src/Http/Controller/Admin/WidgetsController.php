@@ -39,7 +39,7 @@ class WidgetsController extends AdminController
      */
     public function choose(ExtensionCollection $extensions)
     {
-        return $this->view->make(
+        return view(
             'module::admin/widgets/choose',
             [
                 'widgets' => $extensions
@@ -65,7 +65,7 @@ class WidgetsController extends AdminController
         ConfigurationFormBuilder $configuration
     ) {
         /* @var WidgetExtension $extension */
-        $extension = $extensions->get($this->request->get('widget'));
+        $extension = $extensions->get(request('widget'));
 
         $form->addForm('widget', $widget->setExtension($extension));
         $form->addForm('configuration', $configuration->setEntry($extension->getNamespace()));
@@ -108,10 +108,9 @@ class WidgetsController extends AdminController
      */
     public function save(WidgetRepositoryInterface $widgets)
     {
-        foreach (json_decode($this->request->get('columns')) as $column => $columns) {
+        foreach (json_decode(request('columns')) as $column => $columns) {
             foreach ($columns as $position => $widget) {
                 if ($widget = $widgets->find($widget)) {
-
                     $widget->setAttribute('column', $column + 1);
                     $widget->setAttribute('sort_order', $position + 1);
 

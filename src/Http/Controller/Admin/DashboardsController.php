@@ -6,7 +6,6 @@ use Anomaly\DashboardModule\Dashboard\Form\DashboardFormBuilder;
 use Anomaly\DashboardModule\Dashboard\Table\DashboardTableBuilder;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
 use Anomaly\UsersModule\User\Contract\UserInterface;
-use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class DashboardsController
@@ -97,9 +96,9 @@ class DashboardsController extends AdminController
             abort(403);
         }
 
-        $this->template->set('show_banner', true);
+        share('show_banner', true);
 
-        return $this->view->make(
+        return view(
             'module::admin/dashboards/dashboard',
             [
                 'dashboard'  => $dashboard,

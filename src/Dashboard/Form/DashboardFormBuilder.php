@@ -20,5 +20,4 @@ class DashboardFormBuilder extends FormBuilder
     protected $options = [
         'redirect' => 'admin/dashboard/manage',
     ];
-
 }

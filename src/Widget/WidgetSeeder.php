@@ -39,8 +39,8 @@ class WidgetSeeder extends Seeder
     /**
      * Create a new WidgetSeeder instance.
      *
-     * @param WidgetRepositoryInterface        $widgets
-     * @param DashboardRepositoryInterface     $dashboards
+     * @param WidgetRepositoryInterface $widgets
+     * @param DashboardRepositoryInterface $dashboards
      * @param ConfigurationRepositoryInterface $configuration
      */
     public function __construct(

@@ -57,5 +57,4 @@ class WidgetTableBuilder extends TableBuilder
     protected $actions = [
         'delete',
     ];
-
 }

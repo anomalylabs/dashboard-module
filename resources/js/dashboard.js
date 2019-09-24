@@ -21,9 +21,10 @@
         request.send(JSON.stringify({
             _token: CSRF_TOKEN,
             columns: JSON.stringify(
-                columns.map(column => column.sortable.toArray())
-            ),
-        }));
+                columns.map(column = > column.sortable.toArray())
+        ),
+    }))
+        ;
     };
 
     /**

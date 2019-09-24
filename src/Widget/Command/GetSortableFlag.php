@@ -3,7 +3,6 @@
 use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
 use Anomaly\Streams\Platform\Support\Authorizer;
 
-
 /**
  * Class GetSortableFlag
  *
