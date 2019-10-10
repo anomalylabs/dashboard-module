@@ -1,4 +1,6 @@
-<?php namespace Anomaly\DashboardModule;
+<?php
+
+namespace Anomaly\DashboardModule;
 
 use Anomaly\DashboardModule\Command\PublishAssets;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
@@ -26,7 +28,7 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
      *
      * @var array
      */
-    protected $bindings = [
+    public $bindings = [
         DashboardWidgetsEntryModel::class    => WidgetModel::class,
         DashboardDashboardsEntryModel::class => DashboardModel::class,
     ];
@@ -36,7 +38,7 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
      *
      * @var array
      */
-    protected $singletons = [
+    public $singletons = [
         WidgetRepositoryInterface::class    => WidgetRepository::class,
         DashboardRepositoryInterface::class => DashboardRepository::class,
     ];
@@ -46,7 +48,7 @@ class DashboardModuleServiceProvider extends AddonServiceProvider
      *
      * @var array
      */
-    protected $routes = [
+    public $routes = [
         'admin/dashboard'                   => 'Anomaly\DashboardModule\Http\Controller\Admin\DashboardsController@index',
         'admin/dashboard/manage'            => 'Anomaly\DashboardModule\Http\Controller\Admin\DashboardsController@manage',
         'admin/dashboard/create'            => 'Anomaly\DashboardModule\Http\Controller\Admin\DashboardsController@create',
