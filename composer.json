@@ -7,8 +7,7 @@
     ],
     "homepage": "http://pyrocms.com/",
     "license": "MIT",
-    "authors": [
-        {
+    "authors": [{
             "name": "PyroCMS, Inc.",
             "homepage": "http://pyrocms.com/",
             "role": "Owner"
@@ -29,6 +28,13 @@
     "autoload": {
         "psr-4": {
             "Anomaly\\DashboardModule\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Anomaly\\DashboardModule\\DashboardModuleServiceProvider"
+            ]
         }
     }
 }
