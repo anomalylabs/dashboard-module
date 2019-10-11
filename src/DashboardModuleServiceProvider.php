@@ -16,9 +16,8 @@ use Anomaly\Streams\Platform\Model\Dashboard\DashboardWidgetsEntryModel;
 /**
  * Class DashboardModuleServiceProvider
  *
- * @link          http://pyrocms.com/
- * @author        PyroCMS, Inc. <support@pyrocms.com>
- * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @link   http://pyrocms.com/
+ * @author Ryan Thompson <ryan@pyrocms.com>
  */
 class DashboardModuleServiceProvider extends AddonServiceProvider
 {
