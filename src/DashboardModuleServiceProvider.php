@@ -2,7 +2,6 @@
 
 namespace Anomaly\DashboardModule;
 
-use Anomaly\DashboardModule\Command\PublishAssets;
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
 use Anomaly\DashboardModule\Dashboard\DashboardModel;
 use Anomaly\DashboardModule\Dashboard\DashboardRepository;
