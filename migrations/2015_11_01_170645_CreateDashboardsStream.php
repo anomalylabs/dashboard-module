@@ -3,13 +3,13 @@
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
- * Class AnomalyModuleDashboardCreateDashboardsStream
+ * Class CreateDashboardsStream
  *
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleDashboardCreateDashboardsStream extends Migration
+class CreateDashboardsStream extends Migration
 {
 
     /**

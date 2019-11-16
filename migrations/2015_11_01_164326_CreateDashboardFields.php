@@ -5,13 +5,12 @@ use Anomaly\Streams\Platform\Database\Migration\Migration;
 use Anomaly\UsersModule\Role\RoleModel;
 
 /**
- * Class AnomalyModuleDashboardCreateDashboardFields
+ * Class CreateDashboardFields
  *
- * @link          http://pyrocms.com/
- * @author        PyroCMS, Inc. <support@pyrocms.com>
- * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @link   http://pyrocms.com/
+ * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class AnomalyModuleDashboardCreateDashboardFields extends Migration
+class CreateDashboardFields extends Migration
 {
 
     /**
