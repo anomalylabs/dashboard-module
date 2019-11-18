@@ -1,6 +1,7 @@
-<?php namespace Anomaly\DashboardModule\Widget;
+<?php
 
-use Anomaly\ConfigurationModule\Configuration\Contract\ConfigurationRepositoryInterface;
+namespace Anomaly\DashboardModule\Widget;
+
 use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
 use Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
@@ -30,27 +31,17 @@ class WidgetSeeder extends Seeder
     protected $dashboards;
 
     /**
-     * The configuration repository.
-     *
-     * @var ConfigurationRepositoryInterface
-     */
-    protected $configuration;
-
-    /**
      * Create a new WidgetSeeder instance.
      *
      * @param WidgetRepositoryInterface $widgets
      * @param DashboardRepositoryInterface $dashboards
-     * @param ConfigurationRepositoryInterface $configuration
      */
     public function __construct(
         WidgetRepositoryInterface $widgets,
-        DashboardRepositoryInterface $dashboards,
-        ConfigurationRepositoryInterface $configuration
+        DashboardRepositoryInterface $dashboards
     ) {
         $this->widgets       = $widgets;
         $this->dashboards    = $dashboards;
-        $this->configuration = $configuration;
     }
 
     /**
@@ -59,7 +50,7 @@ class WidgetSeeder extends Seeder
     public function run()
     {
         $this->widgets->truncate();
-
+        return; // @todo replace with data field type.
         $dashboard = $this->dashboards->findBySlug('welcome');
 
         $widget = $this->widgets
