@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'title'       => 'Gösterge Paneli',
-    'name'        => 'Gösterge Tablosu Modülü',
+    'title'       => 'Yönetim Paneli',
+    'name'        => 'Yönetim Tablosu Modülü',
     'description' => 'Bir sistem panosu ve rapor yöneticisi.',
     'section'     => [
-        'dashboards' => 'Gösterge tabloları',
+        'dashboards' => 'Yönetim tabloları',
         'widgets'    => 'widget\'lar',
     ],
 ];

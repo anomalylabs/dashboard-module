@@ -2,11 +2,11 @@
 
 return [
     'dashboards' => [
-        'name'   => 'Gösterge tabloları',
+        'name'   => 'Yönetim tabloları',
         'option' => [
-            'read'   => 'Gösterge tabloları bölümüne erişebilir.',
-            'write'  => 'Gösterge tabloları oluşturabilir, düzenleyebilir ve yeniden düzenleyebilir.',
-            'delete' => 'Gösterge tablolarını silebilir.',
+            'read'   => 'Yönetim tabloları bölümüne erişebilir.',
+            'write'  => 'Yönetim tabloları oluşturabilir, düzenleyebilir ve yeniden düzenleyebilir.',
+            'delete' => 'Yönetim tablolarını silebilir.',
         ],
     ],
     'widgets'    => [

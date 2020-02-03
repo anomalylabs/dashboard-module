@@ -2,7 +2,7 @@
 
 return [
     'dashboards' => [
-        'name' => 'Gösterge tabloları',
+        'name' => 'Yönetim tabloları',
     ],
     'widgets'    => [
         'name' => 'Widget\'lar',

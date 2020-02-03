@@ -3,7 +3,7 @@
 return [
     'name'          => [
         'name'         => 'Adı',
-        'instructions' => 'Bu gösterge tablosu için kısa bir tanımlayıcı ad belirtin.',
+        'instructions' => 'Bu Yönetim tablosu için kısa bir tanımlayıcı ad belirtin.',
     ],
     'title'         => [
         'name'         => 'Başlık',
@@ -11,18 +11,18 @@ return [
     ],
     'slug'          => [
         'name'         => 'Özel değer',
-        'instructions' => 'Bilgi, gösterge tablosu URL\'sinde kullanılır.',
+        'instructions' => 'Bilgi, Yönetim tablosu URL\'sinde kullanılır.',
     ],
     'description'   => [
         'name'         => 'Açıklama',
         'instructions' => [
-            'dashboards' => 'Bu gösterge tablosunu kısaca açıklayın.',
+            'dashboards' => 'Bu Yönetim tablosunu kısaca açıklayın.',
             'widgets'    => 'Bu widget\'ı kısaca açıklayın.',
         ],
     ],
     'layout'        => [
         'name'         => 'Düzen',
-        'instructions' => 'Düzen, gösterge tablosu widget\'larını nasıl düzenleyebileceğinizi belirler.',
+        'instructions' => 'Düzen, Yönetim tablosu widget\'larını nasıl düzenleyebileceğinizi belirler.',
         'option'       => [
             '24'      => 'Tek sütun',
             '12-12'   => 'İki eşit sütun',
@@ -36,8 +36,8 @@ return [
         ],
     ],
     'dashboard'     => [
-        'name'         => 'Gösterge Paneli',
-        'instructions' => 'Bu widget\'ın hangi gösterge tablosuna ait olduğunu seçin.',
+        'name'         => 'Yönetim Paneli',
+        'instructions' => 'Bu widget\'ın hangi Yönetim tablosuna ait olduğunu seçin.',
     ],
     'extension'     => [
         'name' => 'Uzantı',
@@ -45,7 +45,7 @@ return [
     'pinned'        => [
         'name'         => 'Sabitlemek',
         'label'        => 'Bu widget\'ı sabitle?',
-        'instructions' => 'Sabitlenmiş widget\'lar tam genişliktedir ve gösterge tablosunun üstüne itilir.',
+        'instructions' => 'Sabitlenmiş widget\'lar tam genişliktedir ve Yönetim tablosunun üstüne itilir.',
     ],
     'allowed_roles' => [
         'name'         => 'İzin Verilen Roller',
@@ -54,7 +54,7 @@ return [
             'widgets'    => 'Bu widget\'ı hangi kullanıcı rollerinin görebileceğini belirtin.',
         ],
         'warning'      => [
-            'dashboards' => 'Hiçbir rol belirtilmezse, bu eklentiye erişimi olan herkes bu gösterge tablosuna erişebilir.',
+            'dashboards' => 'Hiçbir rol belirtilmezse, bu eklentiye erişimi olan herkes bu Yönetim tablosuna erişebilir.',
             'widgets'    => 'Hiçbir rol belirtilmezse, bu eklentiye erişimi olan herkes bu widget\'ı görebilir.',
         ],
     ],
