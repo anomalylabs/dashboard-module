@@ -67,7 +67,7 @@ class WidgetSeeder extends Seeder
                 [
                     'en'        => [
                         'title'       => 'Recent News',
-                        'description' => 'Recent news from http://pyrocms.com/',
+                        'description' => 'Recent news from https://pyrocms.com/',
                     ],
                     'extension' => 'anomaly.extension.xml_feed_widget',
                     'dashboard' => $dashboard,
@@ -81,6 +81,27 @@ class WidgetSeeder extends Seeder
                 'scope' => $widget->getId(),
                 'key'   => 'anomaly.extension.xml_feed_widget::url',
                 'value' => 'http://www.pyrocms.com/posts/rss.xml',
+            ]
+        );
+
+
+        $widget = $this->widgets
+            ->create(
+                [
+                    'en'        => [
+                        'title'       => 'Stack Overflow',
+                        'description' => 'Recent questions from https://stackoverflow.com/',
+                    ],
+                    'extension' => 'anomaly.extension.xml_feed_widget',
+                    'dashboard' => $dashboard,
+                ]
+            );
+
+        $this->configuration->create(
+            [
+                'scope' => $widget->getId(),
+                'key'   => 'anomaly.extension.xml_feed_widget::url',
+                'value' => 'https://stackoverflow.com/feeds/tag?tagnames=PyroCMS&sort=newest',
             ]
         );
     }
