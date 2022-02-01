@@ -52,6 +52,12 @@ class DashboardModule extends Module
                     'data-target' => '#modal',
                     'href'        => 'admin/dashboard/widgets/choose',
                 ],
+                'find_widgets' => [
+                    'target' => '_blank',
+                    'button' => 'information',
+                    'text' => 'anomaly.module.dashboard::button.find_widgets',
+                    'href' => 'https://github.com/anomalylabs?q=widget&type=all&language=&sort=',
+                ],
             ],
         ],
     ];
