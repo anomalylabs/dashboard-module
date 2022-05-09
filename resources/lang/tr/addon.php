@@ -6,6 +6,6 @@ return [
     'description' => 'Bir sistem panosu ve rapor yöneticisi.',
     'section'     => [
         'dashboards' => 'Yönetim tabloları',
-        'widgets'    => 'widget\'lar',
+        'widgets'    => 'Widget\'lar',
     ],
 ];
