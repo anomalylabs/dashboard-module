@@ -48,7 +48,7 @@ class WidgetExtension extends Extension implements WidgetExtensionInterface
         $this->load($widget);
         $this->content($widget);
 
-        return $this->dispatch(new GetOutput($widget));
+        return $this->dispatchSync(new GetOutput($widget));
     }
 
     /**
@@ -68,7 +68,7 @@ class WidgetExtension extends Extension implements WidgetExtensionInterface
      */
     protected function content(WidgetInterface $widget)
     {
-        $this->dispatch(new SetContent($widget));
+        $this->dispatchSync(new SetContent($widget));
     }
 
     /**

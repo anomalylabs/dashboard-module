@@ -30,5 +30,8 @@
         "psr-4": {
             "Anomaly\\DashboardModule\\": "src/"
         }
+    },
+    "require": {
+        "anomaly/streams-platform": "^1.8"
     }
 }
