@@ -129,7 +129,7 @@ class WidgetModel extends DashboardWidgetsEntryModel implements WidgetInterface
      */
     public function isSortable()
     {
-        return $this->dispatchSync(new GetSortableFlag($this));
+        return dispatch_sync(new GetSortableFlag($this));
     }
 
     /**
