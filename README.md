@@ -1,10 +1,59 @@
 # Dashboard Module
 
-[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://packagist.org/packages/anomaly/dashboard-module) 
-[![Build Status](https://scrutinizer-ci.com/g/anomalylabs/dashboard-module/badges/build.png?b=master)](https://scrutinizer-ci.com/g/anomalylabs/dashboard-module/build-status/master)
-[![Code Quality](http://img.shields.io/scrutinizer/g/anomalylabs/dashboard-module.svg)](https://scrutinizer-ci.com/g/anomalylabs/dashboard-module/)
-[![Total Downloads](http://img.shields.io/packagist/dt/anomaly/dashboard-module.svg)](https://packagist.org/packages/anomaly/dashboard-module)
+*anomaly.module.dashboard*
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4099a034-ce40-4c0e-b58e-966415aa6833/small.png)](https://insight.sensiolabs.com/projects/4099a034-ce40-4c0e-b58e-966415aa6833)
+#### A system dashboard and report manager.
 
-A system dashboard and report manager.
+The Dashboard Module provides a customizable dashboard interface with widget support and real-time reporting capabilities.
+
+## Features
+
+- Customizable dashboard layouts
+- Widget system
+- Drag-and-drop widget positioning
+- Widget permissions
+- Real-time data updates
+- Multiple dashboard support
+- Responsive design
+
+## Usage
+
+### Creating Widgets
+
+```php
+namespace Example\ExampleModule\Widget;
+
+use Anomaly\DashboardModule\Widget\WidgetExtension;
+
+class StatsWidget extends WidgetExtension
+{
+    protected $view = 'example.module.example::widgets/stats';
+
+    public function data()
+    {
+        return [
+            'total_users' => User::count(),
+            'total_posts' => Post::count()
+        ];
+    }
+}
+```
+
+### Displaying Dashboard
+
+```twig
+{# Display default dashboard #}
+{{ dashboard()|raw }}
+
+{# Display specific dashboard #}
+{{ dashboard('admin')|raw }}
+```
+
+## Requirements
+
+- Streams Platform ^1.10
+- PyroCMS 3.10+
+
+## License
+
+The Dashboard Module is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

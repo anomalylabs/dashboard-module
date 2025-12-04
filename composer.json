@@ -32,6 +32,6 @@
         }
     },
     "require": {
-        "anomaly/streams-platform": "^1.8"
+        "anomaly/streams-platform": "^1.10"
     }
 }
