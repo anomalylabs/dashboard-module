@@ -94,7 +94,9 @@ class WidgetsController extends AdminController
         ConfigurationFormBuilder $configuration
     ) {
         /* @var WidgetExtension $extension */
-        $extension = $extensions->get($this->request->get('widget'));
+        if (!$extension = $extensions->get($this->request->get('widget'))) {
+            abort(404);
+        }
 
         $form->addForm('widget', $widget->setExtension($extension));
         $form->addForm('configuration', $configuration->setEntry($extension->getNamespace()));
@@ -118,7 +120,9 @@ class WidgetsController extends AdminController
         $id
     ) {
         /* @var WidgetInterface $entry */
-        $entry = $widgets->find($id);
+        if (!$entry = $widgets->find($id)) {
+            abort(404);
+        }
 
         /* @var WidgetExtension $extension */
         $extension = $entry->getExtension();
@@ -135,14 +139,31 @@ class WidgetsController extends AdminController
      *
      * @param WidgetRepositoryInterface    $widgets
      * @param DashboardRepositoryInterface $dashboards
+     * @return \Illuminate\Http\JsonResponse
      */
     public function save(WidgetRepositoryInterface $widgets, DashboardRepositoryInterface $dashboards)
     {
+        $columns = json_decode($this->request->get('columns'), true);
+
+        if (!is_array($columns)) {
+            return response()->json(['message' => 'Invalid columns.'], 422);
+        }
+
         $allowed = $dashboards->allowed()->modelKeys();
 
-        foreach (json_decode($this->request->get('columns')) as $column => $columns) {
-            foreach ($columns as $position => $widget) {
-                if (($widget = $widgets->find($widget)) && in_array($widget->dashboard_id, $allowed)) {
+        foreach (array_values($columns) as $column => $ids) {
+
+            if (!is_array($ids)) {
+                continue;
+            }
+
+            foreach (array_values($ids) as $position => $id) {
+
+                if (!is_scalar($id)) {
+                    continue;
+                }
+
+                if (($widget = $widgets->find($id)) && in_array($widget->dashboard_id, $allowed)) {
 
                     $widget->setAttribute('column', $column + 1);
                     $widget->setAttribute('sort_order', $position + 1);
@@ -151,5 +172,7 @@ class WidgetsController extends AdminController
                 }
             }
         }
+
+        return response()->json(['success' => true]);
     }
 }
