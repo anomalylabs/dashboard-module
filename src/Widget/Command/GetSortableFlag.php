@@ -39,6 +39,6 @@ class GetSortableFlag
      */
     public function handle(Authorizer $authorizer)
     {
-        return $authorizer->authorize('anomaly.module.dashboard::dashboard.write');
+        return $authorizer->authorize('anomaly.module.dashboard::dashboards.write');
     }
 }

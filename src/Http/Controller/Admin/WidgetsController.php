@@ -1,6 +1,7 @@
 <?php namespace Anomaly\DashboardModule\Http\Controller\Admin;
 
 use Anomaly\ConfigurationModule\Configuration\Form\ConfigurationFormBuilder;
+use Anomaly\DashboardModule\Dashboard\Contract\DashboardRepositoryInterface;
 use Anomaly\DashboardModule\Widget\Contract\WidgetInterface;
 use Anomaly\DashboardModule\Widget\Contract\WidgetRepositoryInterface;
 use Anomaly\DashboardModule\Widget\Extension\Form\WidgetExtensionFormBuilder;
@@ -9,6 +10,7 @@ use Anomaly\DashboardModule\Widget\Form\WidgetFormBuilder;
 use Anomaly\DashboardModule\Widget\Table\WidgetTableBuilder;
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
+use Anomaly\Streams\Platform\Support\Authorizer;
 
 /**
  * Class WidgetsController
@@ -19,6 +21,33 @@ use Anomaly\Streams\Platform\Http\Controller\AdminController;
  */
 class WidgetsController extends AdminController
 {
+
+    /**
+     * Create a new WidgetsController instance.
+     *
+     * @param Authorizer $authorizer
+     */
+    public function __construct(Authorizer $authorizer)
+    {
+        parent::__construct();
+
+        $this->middleware(
+            function ($request, $next) use ($authorizer) {
+                $permissions = [
+                    'choose' => 'anomaly.module.dashboard::widgets.write',
+                    'save'   => 'anomaly.module.dashboard::dashboards.write',
+                ];
+
+                $method = $request->route()->getActionMethod();
+
+                if (isset($permissions[$method]) && !$authorizer->authorize($permissions[$method])) {
+                    abort(403);
+                }
+
+                return $next($request);
+            }
+        );
+    }
 
     /**
      * Display an index of existing entries.
@@ -104,13 +133,16 @@ class WidgetsController extends AdminController
     /**
      * Save the dashboard items order.
      *
-     * @param WidgetRepositoryInterface $widgets
+     * @param WidgetRepositoryInterface    $widgets
+     * @param DashboardRepositoryInterface $dashboards
      */
-    public function save(WidgetRepositoryInterface $widgets)
+    public function save(WidgetRepositoryInterface $widgets, DashboardRepositoryInterface $dashboards)
     {
+        $allowed = $dashboards->allowed()->modelKeys();
+
         foreach (json_decode($this->request->get('columns')) as $column => $columns) {
             foreach ($columns as $position => $widget) {
-                if ($widget = $widgets->find($widget)) {
+                if (($widget = $widgets->find($widget)) && in_array($widget->dashboard_id, $allowed)) {
 
                     $widget->setAttribute('column', $column + 1);
                     $widget->setAttribute('sort_order', $position + 1);
