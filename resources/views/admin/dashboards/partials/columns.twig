@@ -1,5 +1,5 @@
 <div class="row">
-    {% for widget in dashboard.widgets.pinned() %}
+    {% for widget in dashboard.widgets.allowed().pinned() %}
         <div class="col-lg-24">
             {{ widget.output()|raw }}
         </div>
